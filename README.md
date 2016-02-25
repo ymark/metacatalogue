@@ -30,3 +30,7 @@ and hard-coded credentials for logging in are:
 
 username: admin
 password: admin
+
+##License
+
+The Genetics vLab is open-sourced software licensed under the MIT license.
