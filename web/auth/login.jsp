@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 24 Φεβ 2016, 1:56:23 μμ
-    Author     : Alexandros
+    Author     : Alexandros Gougousis
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
