@@ -1,0 +1,2 @@
+occurrenceID;datasetID;organismID;scientificName;recordedBy;eventDate;locality;country;waterBody;habitat;ecosystem;equipmentType;decimalLatitude;decimalLongitude;maximumDepthInMeters;minimumDepthInMeters;samplingProtocol;bibliographicCitation;occurrenceRemarks
+F1-1-1;SIGRI_FISH-OCT2013;F1-1-1_OCT2013;Boops boops;Athanasios Evagelopoulos;9/10/2013;South of Kavalouros islet;Greece;Aegean Sea;neritic sub-littoral zone (ENVO:01000126);Sigri Bay;trammel nets;39.197931;25.823476;15;14;fishing with trammel nets 1.3 m wide 22 mm mesh;; 

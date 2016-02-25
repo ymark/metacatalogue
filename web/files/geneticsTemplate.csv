@@ -1,0 +1,2 @@
+datasetID;sampleTakingID;eventDate;ecosystem;ecosystemType;sampleID;scientificName;description;sequencingEventID;device;deviceType;producedFile
+Biodiversity Patterns in Amvrakikos;Material Extraction 002;8/3/2013;Logarou Lagoon;sediment-lagoon;mgs135022;Paraehlersia_ferrugina;mimarks-survey;Sequencing004;Sequencer x;454 GS FLX;454Reads.MID10REV_ChannelA.fastq

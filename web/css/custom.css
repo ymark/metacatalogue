@@ -1,0 +1,205 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8 Μαϊ 2015, 3:49:45 μμ
+    Author     : Alexandros
+*/
+
+.container {
+    max-width: 1280px !important;
+}
+
+/* Required for (at least) index.jsp */
+
+.form-inline .form-control {
+    width: 100% !important;
+}
+
+.tabpanel {
+    margin: 20px;
+}
+
+.tab-pane {
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 20px;
+    background-color: #eeeeee;
+}
+
+.tab-pane .row {
+    margin: 7px 0px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background-color: #eeeeee;
+}
+
+#basicSearch .form-inline:first-child {
+    text-align: right;
+}
+
+.search_header_bar {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 3px;
+    background-color: #ddd;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+/*  */            
+            
+.info_icon {
+    width: 20px;
+    margin-top: 7px;
+    position: relative;
+    right: 15px;
+}
+
+.info-label:hover {
+    cursor: help;
+}
+
+table.footable thead th {
+    background-color: #E6F3F7;
+}
+
+/* */
+.linkStyle {
+    color: #428bca;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+    display: inline;
+}
+
+.linkStyle:hover {
+    cursor: pointer;
+    text-decoration: underline;    
+}
+
+.tooltip {
+    width: 200px;
+}
+
+/*  */
+.my-speed-button {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 4px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 4px;
+    padding: 4px;
+    width: 40px;
+}
+
+.my-speed-button:hover {
+    cursor: pointer;
+}
+
+.my-speed-button-selected {
+    background-color: #eeeeee;
+    border: 1px solid blue;
+    border-radius: 4px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 4px;
+    padding: 4px;
+    width: 40px;
+}
+
+.my-speed-button-selected:hover {
+    cursor: pointer;
+}
+
+ast {
+    color: red;
+}
+
+/*  File Input Field */
+
+.btn-file {
+        position: relative;
+        overflow: hidden;
+}
+.btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+}
+
+/* Footable: alignment of hidden rows */
+
+.footable-row-detail-row {
+    text-align: left !important;
+}
+.footable-row-detail-value {
+    padding-left: 20px;
+}
+
+.tabpanel li a {
+    outline: none;
+}
+
+/* Align the form fields */
+
+.col-md-12 div.col-sm-2 {
+    margin-left: -5px;
+}
+
+.col-md-12 .col-sm-10 {
+    margin-left: -5px;
+}
+
+
+/* Make obvious the form boundaries */
+.form-horizontal {
+    background-color: #f3f3f3;
+    border: 1px dashed gray;
+    margin: 20px 15px;
+    padding: 15px 0;
+}
+
+/* Margins for the seach results */
+.results_wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#template_list img {
+    width: 75px;
+}
+
+#template_list a {
+    color: #416A18;
+}
+
+.icon-link {
+    width: 32px;
+    cursor: pointer;
+}
+
+.myalert {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px !important;
+    margin: 0px 15px 10px 15px !important;
+}

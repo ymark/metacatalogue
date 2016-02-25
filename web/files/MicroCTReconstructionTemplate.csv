@@ -1,0 +1,2 @@
+scanID;reconID;datasetID;reconScope;reconBy;reconDate;reconDuration;reconNotes;cleanup;results;reconFilesStatus
+scan-00001;scan-00001_rec-01;microCT_ElectronicLog;first recon;Sarah Faulwetter;2013-02-18;4:06:21;Scan transferred to electronic log long after scanning time, therefore some details are unknown.;;too much contrast, jaws not visible (too small? formalin problem?). Second reconstruction better, so this one is deleted.;DELETED;;;;;;;;;;;;;;; 
