@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j;
 import org.json.JSONObject;
 
 /**
@@ -26,6 +27,7 @@ import org.json.JSONObject;
 	filterName="AuthFilter",
 	servletNames={"HomeServlet","BasicSearch","DirectorySearch","AdvancedSearch","PublishServlet","BrowseSearch","RecoveryServlet","FullTextSearch","AdminServlet","DownloadServlet","RefineServlet","DocumentServlet"}
 )
+@Log4j
 public class AuthFilter implements Filter {
     
     private String baseUrl;
@@ -35,6 +37,9 @@ public class AuthFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;        
         HttpSession session = httpRequest.getSession(false);
+        session.setAttribute("username","admin");  
+        session.setAttribute("can_manage_datasets","no");  
+        session.setAttribute("can_administrate_metacatalogue","no");  
         String loginURI = this.baseUrl+"/login";
 
         // Check if the user is logged in

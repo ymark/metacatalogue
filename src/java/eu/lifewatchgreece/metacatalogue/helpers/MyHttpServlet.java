@@ -92,6 +92,7 @@ public class MyHttpServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException{
         super.init(config);
+        log.debug("Initializing MyHttpServlet");
         
         // Load hard-coded settings from web.xml
         mysqlUser = config.getServletContext().getInitParameter("mysqlUser"); 
@@ -134,7 +135,9 @@ public class MyHttpServlet extends HttpServlet {
         uriPrefix = settings.get("uriPrefix");
         
         rpp = Integer.parseInt(settings.get("rpp"));
-        ppm = Integer.parseInt(settings.get("ppm"));                         
+        ppm = Integer.parseInt(settings.get("ppm"));     
+        
+        log.debug("Successfully initialized MyHttpServlet");
     }
     
     /**

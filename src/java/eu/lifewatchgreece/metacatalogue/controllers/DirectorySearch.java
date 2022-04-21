@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j;
 
 /**
  * Implements the Basic Search functionality
@@ -22,15 +23,19 @@ import javax.servlet.http.HttpSession;
  * @author Alexandros Gougousis
  * @author Nikos Minadakis
  */
+@Log4j
 public class DirectorySearch extends MyHttpServlet {
     
     @Override
     public void init(ServletConfig config ) throws ServletException{
-        super.init(config);      
+        log.debug("Initializing DirectorySearch Servlet");
+        super.init(config);   
+        log.debug("Successfully initialized DirectorySearch Servlet");
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {       
+        log.debug("Received get request");
 
         HttpSession session = request.getSession(true);
         String canManage = (String)session.getAttribute("can_manage_datasets");
@@ -46,7 +51,8 @@ public class DirectorySearch extends MyHttpServlet {
         try
         {
             // Establish a connection to Virtuoso repository
-            VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                                                
+            VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);   
+            log.debug("Established connection with virtuoso repository");
             
             String pageString = request.getParameter("page");                       // Pagination-related
             int page;                                                               // Pagination-related
@@ -97,6 +103,7 @@ public class DirectorySearch extends MyHttpServlet {
             request.setAttribute("searchOwner",owner);
             request.setAttribute("searchUri",dataset_uri);
             request.setAttribute("searchType",dataset_type);
+            
             request.getRequestDispatcher("/collection_query_results2.jsp").forward(request, response);
         }
         catch (RepositoryConnectionException ex)
