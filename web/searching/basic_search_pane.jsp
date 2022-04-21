@@ -33,6 +33,30 @@
                             <input type="text" class="form-control" id="datasetUri" name="datasetUri" value="">
                         </div> 
                     </div>
+                    <div class="row">                                    
+                        <div class="col-md-4">
+                            <label for="location" class="control-label">Location</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="location" name="location" value="">
+                        </div> 
+                    </div>
+                    <div class="row">                                    
+                        <div class="col-md-4">
+                            <label for="taxonomicCoverage" class="control-label">Taxonomic Coverage</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="taxonomicCoverage" name="taxonomicCoverage" value="">
+                        </div> 
+                    </div>
+                    <div class="row">                                    
+                        <div class="col-md-4">
+                            <label for="dateCoverage" class="control-label">Date</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="dateCoverage" name="dateCoverage" value="">
+                        </div> 
+                    </div>
                     <div class="row">
                         <div class="col-md-4">
                             <label for="datasetType" class="control-label">Dataset Type</label>
