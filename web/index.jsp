@@ -69,7 +69,7 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li role="presentation" class="active"><a href="#basicSearch" aria-controls="basicSearch" role="tab" data-toggle="tab">Basic Search</a></li>
-              <li role="presentation"><a href="#fundamentalSearch" aria-controls="fundamentalSearch" role="tab" data-toggle="tab">Fundamental Search</a></li>
+              <!--<li role="presentation"><a href="#fundamentalSearch" aria-controls="fundamentalSearch" role="tab" data-toggle="tab">Fundamental Search</a></li>-->
               <li role="presentation"><a id="advancedSearchNav" href="#advancedSearch" aria-controls="advancedSearch" role="tab" data-toggle="tab">Advanced Search</a></li>   
               <li role="presentation"><a href="#browseSearch" aria-controls="browseSearch" role="tab" data-toggle="tab">Browse Contents</a></li> 
               <li role="presentation"><a href="#sparqlSearch" aria-controls="sparqlSearch" role="tab" data-toggle="tab">SPARQL Endpoint</a></li>

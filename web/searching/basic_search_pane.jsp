@@ -54,7 +54,7 @@
                             <label for="dateCoverage" class="control-label">Date</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="dateCoverage" name="dateCoverage" value="">
+                            <input type="date" class="form-control" id="dateCoverage" name="dateCoverage" value="">
                         </div> 
                     </div>
                     <div class="row">

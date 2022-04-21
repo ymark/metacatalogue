@@ -46,7 +46,10 @@ public class DirectorySearch extends MyHttpServlet {
         String owner = getTextFormField(request,"owner");
         String dataset_uri = getTextFormField(request,"datasetURI");
         String dataset_name = getTextFormField(request,"datasetName");
-        String dataset_type = getTextFormField(request,"datasetType");        
+        String dataset_type = getTextFormField(request,"datasetType");
+        String dataset_location = getTextFormField(request,"location");
+        String dataset_taxonomic_coverage = getTextFormField(request,"taxonomicCoverage");
+        String dataset_date = getTextFormField(request,"dateCoverage");
         
         try
         {
@@ -69,7 +72,7 @@ public class DirectorySearch extends MyHttpServlet {
             int lastPage;
 
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,"", "", "", limit,offset,directoryGraph);                                    
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);                                    
             
             int countResults = results.size();                                      // Pagination-related
             int startPage = ((int) Math.ceil(page/(double) this.ppm) - 1)*this.ppm + 1;   // Pagination-related
