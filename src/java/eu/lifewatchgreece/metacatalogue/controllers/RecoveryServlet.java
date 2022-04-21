@@ -4,7 +4,6 @@ import eu.lifewatch.core.impl.Transformations;
 import eu.lifewatch.core.impl.VirtuosoRepositoryManager;
 import eu.lifewatch.exception.QueryExecutionException;
 import eu.lifewatch.exception.RepositoryConnectionException;
-import eu.lifewatch.service.impl.ContentStorageService;
 import eu.lifewatchgreece.metacatalogue.helpers.MyHttpServlet;
 import java.io.IOException;
 import java.text.ParseException;
@@ -66,7 +65,7 @@ public class RecoveryServlet extends MyHttpServlet {
         try {
 
             ArrayList<String> datasets = new ArrayList<>();
-            datasets = new ContentStorageService().search_directory_datasets_by_type(new ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc), "Directory Metadata","Directory_RCV");
+//            datasets = new ContentStorageService().search_directory_datasets_by_type(new ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc), "Directory Metadata","Directory_RCV");
             
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
             TreeSet<String> datasetsU = new TreeSet<>();
@@ -77,9 +76,10 @@ public class RecoveryServlet extends MyHttpServlet {
 
             for (String datasetURI : datasetsU) {
 
-                String filename = new ContentStorageService().get_dataset_by_type(new ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                        this.directoryRecoveryPath, datasetURI, "Directory Metadata"
-                );
+//                String filename = new ContentStorageService().get_dataset_by_type(new ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                        this.directoryRecoveryPath, datasetURI, "Directory Metadata"
+//                );
+                String filename="filename";
 
                 ArrayList<String> queryList = new Transformations().transform_data_collection_csv(this.directoryRecoveryPath+filename, this.directoryGraph);
                 Iterator itr = queryList.iterator();
@@ -91,14 +91,6 @@ public class RecoveryServlet extends MyHttpServlet {
 
             }            
 
-        } catch (JargonException ex) {
-            log2db(request,"Exception",ex.getMessage());
-            request.setAttribute("errorMessage", "JargonException happened! "+ex.getMessage());
-            return false;
-        } catch (JargonQueryException ex) {
-            log2db(request,"Exception",ex.getMessage());
-            request.setAttribute("errorMessage", "JargonQueryException happened! "+ex.getMessage());
-            return false;
         } catch (RepositoryConnectionException ex) {
             log2db(request,"Exception",ex.getMessage());
             request.setAttribute("errorMessage", "RepositoryConnectionException happened! "+ex.getMessage());
@@ -106,10 +98,6 @@ public class RecoveryServlet extends MyHttpServlet {
         } catch (QueryExecutionException ex) {
             log2db(request,"Exception",ex.getMessage());
             request.setAttribute("errorMessage", "QueryExecutionException happened! "+ex.getMessage());
-            return false;
-        } catch (ParseException ex) {
-            log2db(request,"Exception",ex.getMessage());
-            request.setAttribute("errorMessage", "ParseException happened! "+ex.getMessage());
             return false;
         } catch (IOException ex) {
             log2db(request,"Exception",ex.getMessage());

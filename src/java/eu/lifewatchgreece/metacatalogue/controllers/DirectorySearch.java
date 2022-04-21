@@ -56,14 +56,14 @@ public class DirectorySearch extends MyHttpServlet {
                 page = Integer.parseInt(pageString);                                // Pagination-related
             }                                                                       // Pagination-related           
                                                                
-            int offset = (page-1)*this.rpp;                                         // Pagination-related
-            int limit = this.rpp*(this.ppm+1);                                      // Pagination-related
+            int offset = -1;
+            int limit = -1; 
             boolean leftArrow = true;                                               // Pagination-related
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
 
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,limit,offset,directoryGraph);                                    
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,"", "", "", limit,offset,directoryGraph);                                    
             
             int countResults = results.size();                                      // Pagination-related
             int startPage = ((int) Math.ceil(page/(double) this.ppm) - 1)*this.ppm + 1;   // Pagination-related

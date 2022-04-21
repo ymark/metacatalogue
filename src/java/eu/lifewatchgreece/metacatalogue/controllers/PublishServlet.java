@@ -8,7 +8,6 @@ import eu.lifewatch.core.model.DirectoryStruct;
 import eu.lifewatch.exception.QueryExecutionException;
 import eu.lifewatch.exception.RepositoryConnectionException;
 import eu.lifewatch.exception.URIValidationException;
-import eu.lifewatch.service.impl.ContentStorageService;
 import eu.lifewatch.service.impl.DirectoryService;
 import eu.lifewatchgreece.metacatalogue.beans.forms.NewDescriptionForm;
 import eu.lifewatchgreece.metacatalogue.helpers.MyHttpServlet;
@@ -338,10 +337,10 @@ public class PublishServlet extends MyHttpServlet {
             HttpSession session = request.getSession(false);
             String user_email = (String) session.getAttribute("user_email");
                      
-            new  ContentStorageService()
-                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            internalDatasetPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
-                            date.toString(),targetDataset,"Dataset");                                    
+//            new  ContentStorageService()
+//                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            internalDatasetPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
+//                            date.toString(),targetDataset,"Dataset");                                    
 
             ToastMessage toast = new ToastMessage();
             toast.setMessageType("success");
@@ -408,10 +407,10 @@ public class PublishServlet extends MyHttpServlet {
             HttpSession session = request.getSession(false);
             String user_email = (String) session.getAttribute("user_email");
                      
-            new  ContentStorageService()
-                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            internalMetadataPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
-                            date.toString(),targetDataset ,metadataType);            
+//            new  ContentStorageService()
+//                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            internalMetadataPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
+//                            date.toString(),targetDataset ,metadataType);            
             
             //
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
@@ -546,15 +545,15 @@ public class PublishServlet extends MyHttpServlet {
                         
             String user_email = (String) session.getAttribute("user_email");
                      
-            new  ContentStorageService()
-                    .import_to_directory_recovery( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            descriptionPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
-                            date.toString(),datasetName ,"Directory Metadata","Directory_RCV");
-            
-            new  ContentStorageService()
-                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            descriptionPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
-                            date.toString(),datasetName ,"Directory Metadata");            
+//            new  ContentStorageService()
+//                    .import_to_directory_recovery( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            descriptionPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
+//                            date.toString(),datasetName ,"Directory Metadata","Directory_RCV");
+//            
+//            new  ContentStorageService()
+//                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            descriptionPath+"/" + fileName, irodsPath, fileName,user_email, datasetURI,
+//                            date.toString(),datasetName ,"Directory Metadata");            
             
             //
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
@@ -777,16 +776,16 @@ public class PublishServlet extends MyHttpServlet {
             String datasetURI = trns.createURI(this.uriPrefix,datasetName,"dataset");
             Date date = new Date();                        
             
-            new  ContentStorageService()
-                    .import_to_directory_recovery( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            descriptionPath+"/" + name, irodsPath, name,user_email, datasetURI,
-                            date.toString(),datasetName ,"Directory Metadata","Directory_RCV");
-                        
-            // Save form file into iRODS for any purpose
-            new  ContentStorageService()
-                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
-                            descriptionPath+"/" + name, irodsPath, name,user_email, datasetURI,
-                            date.toString(),datasetName ,"Directory Metadata");
+//            new  ContentStorageService()
+//                    .import_to_directory_recovery( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            descriptionPath+"/" + name, irodsPath, name,user_email, datasetURI,
+//                            date.toString(),datasetName ,"Directory Metadata","Directory_RCV");
+//                        
+//            // Save form file into iRODS for any purpose
+//            new  ContentStorageService()
+//                    .import_to_content_storage( new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),
+//                            descriptionPath+"/" + name, irodsPath, name,user_email, datasetURI,
+//                            date.toString(),datasetName ,"Directory Metadata");
             
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
             String query = directoryStruct.toNtriples();
@@ -815,11 +814,6 @@ public class PublishServlet extends MyHttpServlet {
             request.setAttribute("errorMessage", "QueryExecutionException happened! "+ex.getMessage());
             this.deleteDataset(request, datasetName);
             return false;
-        } catch (JargonException ex) {
-            log2db(request,"JargonException",ex.getMessage());
-            request.setAttribute("errorMessage", "JargonException happened! "+ex.getMessage());
-            this.deleteDataset(request, datasetName);
-            return false;
         } catch (Exception ex){
             log2db(request,"Exception",ex.getMessage());
             request.setAttribute("errorMessage", "Exception happened! "+ex.getMessage());     
@@ -836,13 +830,14 @@ public class PublishServlet extends MyHttpServlet {
      * @param datasetName  The name of the dataset to be deleted
      */
     private void deleteDataset(HttpServletRequest request, String datasetName){
-        
-        try {
-            new  ContentStorageService().delete_dataset(null, datasetName);
-        } catch (Exception ex) {
-            log2db(request,"Deleting dataset exception",ex.getMessage());
-            request.setAttribute("errorMessage", "Exception happened! "+ex.getMessage());            
-        } 
+        System.out.println("do nothing");
+//        
+//        try {
+//            new  ContentStorageService().delete_dataset(null, datasetName);
+//        } catch (Exception ex) {
+//            log2db(request,"Deleting dataset exception",ex.getMessage());
+//            request.setAttribute("errorMessage", "Exception happened! "+ex.getMessage());            
+//        } 
         
     }
     

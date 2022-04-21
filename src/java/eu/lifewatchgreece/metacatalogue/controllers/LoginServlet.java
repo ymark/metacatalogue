@@ -60,8 +60,8 @@ public class LoginServlet extends MyHttpServlet {
         if((username.equals("admin"))&&(password.equals("admin"))){   
             HttpSession session=request.getSession();  
             session.setAttribute("username",username);  
-            session.setAttribute("can_manage_datasets","yes");  
-            session.setAttribute("can_administrate_metacatalogue","yes");  
+            session.setAttribute("can_manage_datasets","no");  
+            session.setAttribute("can_administrate_metacatalogue","no");  
             response.sendRedirect(this.baseUrl);
         } else{  
             request.setAttribute("baseUrl",baseUrl); 

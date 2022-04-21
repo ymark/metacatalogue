@@ -2,7 +2,7 @@ package eu.lifewatchgreece.metacatalogue.controllers;
 
 import eu.lifewatch.core.impl.VirtuosoRepositoryManager;
 import eu.lifewatch.core.model.DirectoryStruct;
-import eu.lifewatch.service.impl.ContentStorageService;
+
 import eu.lifewatch.service.impl.DirectoryService;
 import eu.lifewatchgreece.metacatalogue.helpers.MyHttpServlet;
 import java.io.File;
@@ -50,7 +50,7 @@ public class DownloadServlet extends MyHttpServlet {
             // Establish a connection to Virtuoso repository
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                                                            
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset("","",dataset_uri,"",directoryGraph);                                    
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset("","",dataset_uri,"","","","",-1,-1,directoryGraph);
             // There should be one and only result   
             if(results.size() != 1){
                 log2db(request,"illegal","The dataset URI resulted in "+results.size()+" directory descriptions.");
@@ -78,7 +78,8 @@ public class DownloadServlet extends MyHttpServlet {
                 }                
                 
                 // Get file from iRODS and copy it into a local folder for downloading
-                String dl_filename = new  ContentStorageService().get_dataset(new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),dlPath, dataset_uri,"Dataset");
+//                String dl_filename = new  ContentStorageService().get_dataset(new  ContentStorageService().connect_to_content_storage(irodsIP, irodsPort, irodsUsername, irodsPassword,irodsPath, irodsTempZone,irodsDemoResc),dlPath, dataset_uri,"Dataset");
+                String dl_filename = "dataset";
                 
                 String filePath = dlPath+dl_filename;
                 File downloadFile = new File(filePath);

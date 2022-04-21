@@ -218,7 +218,7 @@ public class MyHttpServlet extends HttpServlet {
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                                                
             
             // Search and retrieve the results
-            List<DirectoryStruct> dservice = new DirectoryService(directoryManager).searchDataset(dataset_name,"","","",directoryGraph);                        
+            List<DirectoryStruct> dservice = new DirectoryService(directoryManager).searchDataset(dataset_name,"","","","","","",-1,-1,directoryGraph);                        
             
             DirectoryStruct dataset;
             if(dservice.size() > 0){
@@ -326,17 +326,20 @@ public class MyHttpServlet extends HttpServlet {
      */
     protected ArrayList<SystemSetting> getSystemSettings(){
         
-        try {                        
+        try {
+            logText("Entered in getSystemSettings");
             if((this.conn == null)||(!this.conn.isValid(4))){
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 this.conn = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPwd);
             }
+            logText("Connected");
 
             ArrayList<SystemSetting> settingList = new ArrayList<SystemSetting>();
 
             DSLContext database = DSL.using(this.conn, SQLDialect.MYSQL);
             Settings set = SETTINGS.as("set");
             Result<SettingsRecord> results = database.selectFrom(set).fetch();                
+            logText("Executed Query");
             for(SettingsRecord item: results){
 
                 SystemSetting settingObj = new SystemSetting();
@@ -350,7 +353,9 @@ public class MyHttpServlet extends HttpServlet {
             return settingList;
             
         } catch (Exception ex){
-            logText(ex.getMessage());
+            logText("Encountered Exc");
+            logText(ex.toString());
+            ex.printStackTrace();
             return null;
         }
         
