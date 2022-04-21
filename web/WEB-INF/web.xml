@@ -15,12 +15,12 @@
     <context-param>
         <description>MySQL Password</description>
         <param-name>mysqlPwd</param-name>
-        <param-value>root_ROOT_1234</param-value>
+        <param-value>pass</param-value>
     </context-param>
     <context-param>
         <description>MySQL Connection URL</description>
         <param-name>mysqlUrl</param-name>
-        <param-value>jdbc:mysql://62.217.127.213:3306/metacatalogue</param-value>
+        <param-value>jdbc:mysql://X.X.X.X:XXXX/metacatalogue</param-value>
     </context-param>
     <context-param>
         <description>Path of text log file</description>
