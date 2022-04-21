@@ -34,8 +34,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,10 +41,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import lombok.extern.log4j.Log4j;
 import org.jooq.DSLContext;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
+
+
 
 /**
  * Implements basic functionality that is useful to a number of servlets 
@@ -54,8 +55,9 @@ import org.jooq.impl.DSL;
  * @license MIT
  * @author Alexandros Gougousis
  */
+@Log4j
 public class MyHttpServlet extends HttpServlet {
-    
+//    private final Logger log=org.apache.log4j.Logger.getLogger(MyHttpServlet.class);
     protected String baseUrl;
         
     protected String virtuosoUrl;
@@ -106,7 +108,7 @@ public class MyHttpServlet extends HttpServlet {
         // Load dynamic settings from database
         settings = new HashMap<String,String>();
         ArrayList<SystemSetting> system_settings = getSystemSettings();
-        logText("count settings = "+system_settings);
+        log.debug("count settings = "+system_settings);
         for(SystemSetting item : system_settings){
             settings.put(item.getSname(),item.getSvalue());
         }
@@ -274,7 +276,7 @@ public class MyHttpServlet extends HttpServlet {
             }
                             
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
             return false;
         }
     }
@@ -292,7 +294,7 @@ public class MyHttpServlet extends HttpServlet {
                 this.conn = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPwd);
             }            
             
-            logText("Looking for dataset = "+datasetName);
+            log.debug("Looking for dataset = "+datasetName);
             DSLContext database = DSL.using(this.conn, SQLDialect.MYSQL);
             Datasets dat = DATASETS.as("dat");
             /*
@@ -306,7 +308,7 @@ public class MyHttpServlet extends HttpServlet {
                                                 .where(dat.NAME.equal(datasetName))                                               
                                                 .fetch();    
             
-            logText("count = "+results.size());
+            log.debug("count = "+results.size());
             if(results.size() > 0){
                 return true;
             } else {
@@ -314,7 +316,7 @@ public class MyHttpServlet extends HttpServlet {
             }
                             
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
             return false;
         }
     }
@@ -327,19 +329,19 @@ public class MyHttpServlet extends HttpServlet {
     protected ArrayList<SystemSetting> getSystemSettings(){
         
         try {
-            logText("Entered in getSystemSettings");
+            log.debug("Entered in getSystemSettings");
             if((this.conn == null)||(!this.conn.isValid(4))){
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
                 this.conn = DriverManager.getConnection(mysqlUrl, mysqlUser, mysqlPwd);
             }
-            logText("Connected");
+            log.debug("Connected");
 
             ArrayList<SystemSetting> settingList = new ArrayList<SystemSetting>();
 
             DSLContext database = DSL.using(this.conn, SQLDialect.MYSQL);
             Settings set = SETTINGS.as("set");
             Result<SettingsRecord> results = database.selectFrom(set).fetch();                
-            logText("Executed Query");
+            log.debug("Executed Query");
             for(SettingsRecord item: results){
 
                 SystemSetting settingObj = new SystemSetting();
@@ -353,8 +355,7 @@ public class MyHttpServlet extends HttpServlet {
             return settingList;
             
         } catch (Exception ex){
-            logText("Encountered Exc");
-            logText(ex.toString());
+            log.error("Encountered Exc",ex);
             ex.printStackTrace();
             return null;
         }
@@ -383,7 +384,7 @@ public class MyHttpServlet extends HttpServlet {
                 .execute();     
                                    
         } catch (Exception ex){
-            logText(ex.getMessage());            
+            log.error(ex.getMessage());            
         }
         
     }
@@ -421,7 +422,7 @@ public class MyHttpServlet extends HttpServlet {
             return datasetList;
             
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
             return null;
         }
     }
@@ -459,7 +460,7 @@ public class MyHttpServlet extends HttpServlet {
             return datasetList;
             
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
             return null;
         }
     }
@@ -492,7 +493,7 @@ public class MyHttpServlet extends HttpServlet {
             logItem.setRelatedDataset(dataset);
             logItem.store();    
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
         }
         
     }
@@ -523,7 +524,7 @@ public class MyHttpServlet extends HttpServlet {
             logItem.setMessage(message);
             logItem.store();  
         } catch (Exception ex){
-            logText(ex.getMessage());
+            log.error(ex.getMessage());
         }
                 
     }
@@ -618,27 +619,27 @@ public class MyHttpServlet extends HttpServlet {
         }
     }
     
-    /**
-     * Stores a log item in a log file
-     * 
-     * @param message  The message to be logged
-     */
-    protected void logText(String message){
-        
-        String logFilePath = this.getServletContext().getInitParameter("logFilePath");
-        PrintWriter out = null;
-        
-        try {
-            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            Date date = new Date();
-            
-            out = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
-            out.println(dateFormat.format(date)+message);
-            out.close();
-        } catch (Exception ex) {
-            Logger.getLogger(MyHttpServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }                   
-    }
+//    /**
+//     * Stores a log item in a log file
+//     * 
+//     * @param message  The message to be logged
+//     */
+//    protected void logText(String message){
+//        
+//        String logFilePath = this.getServletContext().getInitParameter("logFilePath");
+//        PrintWriter out = null;
+//        
+//        try {
+//            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//            Date date = new Date();
+//            
+//            out = new PrintWriter(new BufferedWriter(new FileWriter(logFilePath, true)));
+//            out.println(dateFormat.format(date)+message);
+//            out.close();
+//        } catch (Exception ex) {
+//            Logger.getLogger(MyHttpServlet.class.getName()).log(Level.SEVERE, null, ex);
+//        }                   
+//    }
     
     /**
      * Retrieve the most recent lines from the log file
@@ -666,10 +667,10 @@ public class MyHttpServlet extends HttpServlet {
             return lines;
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(MyHttpServlet.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex);
             return null;
         } catch (IOException ex) {
-            Logger.getLogger(MyHttpServlet.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex);
             return null;
         }        
     }
