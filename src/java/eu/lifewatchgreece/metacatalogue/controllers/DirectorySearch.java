@@ -43,7 +43,7 @@ public class DirectorySearch extends MyHttpServlet {
         String canAdministrate = (String)session.getAttribute("can_administrate_metacatalogue"); 
         request.setAttribute("canAdministrate",canAdministrate);
         
-        String owner = getTextFormField(request,"owner");
+//        String owner = getTextFormField(request,"owner");
         String dataset_uri = getTextFormField(request,"datasetURI");
         String dataset_name = getTextFormField(request,"datasetName");
         String dataset_type = getTextFormField(request,"datasetType");
@@ -71,7 +71,7 @@ public class DirectorySearch extends MyHttpServlet {
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);                                    
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, "", dataset_uri,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);                                    
             
             int countResults = results.size();                                      // Pagination-related
             int startPage = ((int) Math.ceil(page/(double) this.ppm) - 1)*this.ppm + 1;   // Pagination-related
@@ -102,7 +102,7 @@ public class DirectorySearch extends MyHttpServlet {
             request.setAttribute("rightArrow",rightArrow);                        
             request.setAttribute("baseUrl",baseUrl);
             request.setAttribute("searchName",dataset_name);
-            request.setAttribute("searchOwner",owner);
+//            request.setAttribute("searchOwner",owner);
             request.setAttribute("searchUri",dataset_uri);
             request.setAttribute("searchType",dataset_type);
             
