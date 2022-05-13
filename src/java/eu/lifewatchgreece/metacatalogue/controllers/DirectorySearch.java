@@ -65,12 +65,11 @@ public class DirectorySearch extends MyHttpServlet {
                 page = Integer.parseInt(pageString);                                // Pagination-related
             }                                                                       // Pagination-related           
                                                                
-            int offset = -1;
-            int limit = -1; 
+            int offset = (page-1)*this.rpp;
+            int limit = this.rpp; 
             boolean leftArrow = true;                                               // Pagination-related
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
-
             // Search and retrieve the results
             List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, owner, dataset_uri,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);                                    
             
