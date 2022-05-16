@@ -38,7 +38,7 @@ public class FullTextSearch extends MyHttpServlet {
         
         try {
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
-            String description = new MetadataRepositoryService(directoryManager).produceText(s_name, baseUrl+"/search/browse?uri=", this.metadataGraph);
+            String description = new MetadataRepositoryService(directoryManager).produceText(s_name, baseUrl+"/search/browse?uri=", this.metadataGraph, this.directoryGraph);
              
             HttpSession session = request.getSession(true);
             String canManage = (String)session.getAttribute("can_manage_datasets");
