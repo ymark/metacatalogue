@@ -19,20 +19,20 @@
                     </div>
                     <div class="row">                                    
                         <div class="col-md-4">
-                            <label for="owner" class="control-label info-label" data-container="body" data-toggle="popover" data-placement="left" data-content="">Owner</label>
+                            <label for="institution" class="control-label info-label" data-container="body" data-toggle="popover" data-placement="left" data-content="">Institution</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="owner" name="owner" value="">
+                            <input type="text" class="form-control" id="institution" name="institution" value="">
                         </div>                                    
                     </div>
-<!--                    <div class="row">                                    
+                    <div class="row">                                    
                         <div class="col-md-4">
-                            <label for="datasetUri" class="control-label">Dataset URI</label>
+                            <label for="creator" class="control-label">Creator</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" id="datasetUri" name="datasetUri" value="">
+                            <input type="text" class="form-control" id="creator" name="creator" value="">
                         </div> 
-                    </div>-->
+                    </div>
                     <div class="row">                                    
                         <div class="col-md-4">
                             <label for="location" class="control-label">Location</label>
