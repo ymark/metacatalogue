@@ -154,7 +154,7 @@
                 <nav>
                     <ul class="pagination">
                         <li <c:if test = "${!leftArrow}">class='disabled'</c:if> >
-                            <a href="${baseUrl}/search/directory?datasetName=${searchName}&owner=${searchOwner}&datasetUri=${searchUri}&datasetType=${searchType}&page=${page-1}" aria-label="Previous">
+                            <a href="${baseUrl}/search/directory?datasetName=${searchName}&institution=${institution}&creator=${creator}&datasetType=${datasetType}&location=${location}&taxonomicCoverage=${taxonomicCoverage}&dateCoverage=${dateCoverage}&page=${page-1}" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -165,14 +165,14 @@
                                 </c:when>    
                                 <c:otherwise>     
                                     <c:if test = "${loop.index <= lastPage}">
-                                        <li><a href="${baseUrl}/search/directory?datasetName=${searchName}&owner=${searchOwner}&datasetUri=${searchUri}&datasetType=${searchType}&page=${loop.index}">${loop.index}</a></li>
+                                        <li><a href="${baseUrl}/search/directory?datasetName=${searchName}&institution=${institution}&creator=${creator}&datasetType=${datasetType}&location=${location}&taxonomicCoverage=${taxonomicCoverage}&dateCoverage=${dateCoverage}&page=${loop.index}">${loop.index}</a></li>
                                     </c:if>                                                                      
                                 </c:otherwise>
                             </c:choose>                        
                         </c:forEach>
                         <c:if test = "${rightArrow}">
                             <li>
-                                <a href="${baseUrl}/search/directory?datasetName=${searchName}&owner=${searchOwner}&datasetUri=${searchUri}&datasetType=${searchType}&page=${page+1}" aria-label="Next">
+                                <a href="${baseUrl}/search/directory?datasetName=${searchName}&institution=${institution}&creator=${creator}&datasetType=${datasetType}&location=${location}&taxonomicCoverage=${taxonomicCoverage}&dateCoverage=${dateCoverage}&page=${page+1}" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
