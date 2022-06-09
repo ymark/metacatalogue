@@ -86,7 +86,7 @@
                     <th data-hide="all">Description</th>
                     
                     <th data-hide="all">Keeper</th>
-                    <th data-hide="all">Publisher</th>
+<!--                    <th data-hide="all">Publisher</th>-->
                     <th data-hide="all">Publication Date</th>
                     <th data-hide="all">Creator</th>
                     <th data-hide="all">Creation Date</th>
@@ -94,11 +94,10 @@
                     <th data-hide="all">Access Rights</th>
                     <th data-hide="all">Rights Holder</th>
                 
-                    <th data-hide="all">Parent Dataset</th>
-                    <th data-hide="all">Image URI</th>
-                    <th data-hide="all">Location</th>
-                    
-                    <th data-hide="all">Embargo State</th>
+                    <!--<th data-hide="all">Parent Dataset</th>-->
+                    <th data-hide="all">Geographic Coverage</th>
+                    <th data-hide="all">Taxonomic Coverage</th>
+                    <th data-hide="all">Temporal Coverage</th>
                     <th data-hide="all">Embargo Period</th>
                     
                     <th data-hide="all" style="text-align: left">Dataset ID</th> 
@@ -121,7 +120,7 @@
                             <td>${item.getAccessMethod()}</td>
                             <td>${item.getDescription()}</td>
                             <td><a href="${baseUrl}/search/browse?uri=${item.getKeeperURI()}">${item.getKeeperName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>
+                            <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
                             <td>${item.getPublicationDate()}</td>
                             <td><a href="${baseUrl}/search/browse?uri=${item.getCreatorURI()}">${item.getCreatorName()}</a></td>
                             <td>${item.getCreationDate()}</td>
@@ -138,11 +137,11 @@
                             <td><a href="${baseUrl}/search/browse?uri=${item.getAccessRightsURI()}">${item.getAccessRights()}</a></td>
                             <td><a href="${baseUrl}/search/browse?uri=${item.getRightsHolderURI()}">${item.getRightsHolderName()}</a></td>
                
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getParentDatasetURI()}">${item.getParentDatasetName()}</a></td>
-                            <td style='text-align: left'>${item.getImageURI()}</td> 
-                            <td>${item.getLocationURL()}</td>
+                            <td>${item.getGeographicCoverage()}</td>
+                            <td>${item.getTaxonomicCoverage()}</td>
+                            <td>${item.getTemporalCoverage()}</td>
                                                                             
-                            <td>${item.getEmbargoState()}</td>
+                            <!--<td>${item.getEmbargoState()}</td>-->
                             <td>${item.getEmbargoPeriod()}</td>    
                             <td style='text-align: left'>${item.getDatasetID()}</td>  
                         <tr/>
