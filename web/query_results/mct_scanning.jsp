@@ -47,41 +47,84 @@
             <table class="footable table table-bordered" >
                 <thead>
                     <th>Row</th>
-                    <th>Specimen</th>
-                    <th>Device</th>
-                    <th>Enhancement Method</th>
-                    <th>Related Dataset</th>
+                    <th>Scan ID</th>
+                    <th>Specimen ID</th>
+                    <th>Specimen Name</th>
                     <th data-toggle="true"></th>
-                    <th data-hide="all">Dataset Title</th>                                  
-                    <th data-hide="all">Scanning ID</th>
-                    <th data-hide="all">Product</th>                                 
-                    <th data-hide="all">Actor</th>
-                    <th data-hide="all">Date</th>   
-                    <th data-hide="all">Zoom</th>   
-                    <th data-hide="all">Exposure Time</th>   
-                    <th data-hide="all">Filter</th>   
-                    <th data-hide="all">Voltage</th>   
+                    <th data-hide="all">Enhancement Contrast Method</th>
+                    <th data-hide="all">Filter</th>                                 
+                    <th data-hide="all">Protocol</th>
+                    <th data-hide="all">Preparation Date/Time</th>
+                    <th data-hide="all">Preparation Notes</th>
+                    <th data-hide="all">Scope of Scan</th>
+                    <th data-hide="all">Sample holder</th>
+                    <th data-hide="all">Scanning medium</th>
+                    <th data-hide="all">Scanned part</th>
+                    <th data-hide="all">Scanned by</th>
+                    <th data-hide="all">Scan date</th>
+                    <th data-hide="all">Scan duration</th>
+                    <th data-hide="all">Instrument</th>
+                    <th data-hide="all">Voltage (kV)</th>
+                    <th data-hide="all">Current (uA)</th>
+                    <th data-hide="all">Zoom (um)</th>
+                    <th data-hide="all">Camera resolution</th>
+                    <th data-hide="all">Averaging</th>
+                    <th data-hide="all">Random movement</th>
+                    <th data-hide="all">Scan (360 or 180)</th>
+                    <th data-hide="all">Exposure time (ms)</th>
+                    <th data-hide="all">Oversize settings</th>
+                    <th data-hide="all">File location</th>
+                    <th data-hide="all">Collection code</th>
+                    <th data-hide="all">Specimen provider</th>
+                    <th data-hide="all">Specimen provider institute</th>
+                    <th data-hide="all">Specimen description</th>
+                    <th data-hide="all">Material</th>
+                    <th data-hide="all">Scientific name</th>
+                    <th data-hide="all">Taxonomic group</th>
+                    <th data-hide="all">Specimen size (mm)</th>
+                    <th data-hide="all">Fixation type</th>
+                    <th data-hide="all">Storage place</th>
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
-                        <% Pair products = ((MicroCTScanningStruct)pageContext.getAttribute("item")).getProducts().get(0); %>
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getSpecimenURI()}">${item.getSpecimenName()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getDeviceURI()}">${item.getDeviceName()}</a></td>
-                            <td style="text-align: left">${item.getContrastMethod()}</td>         
-                             <td><a href="${baseUrl}/search/directory?datasetName=&owner=&datasetURI=${item.getDatasetURI()}">View dataset</a></td>
+                            <td>${item.getScanningLabel()}</td>
+                            <td>${item.getSpecimen().getSpecimenID()}</td>
+                            <td>${item.getSpecimen().getSpecimenName()}</td>
                             <td><span class="footable-toggle"></span> More info</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>        
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getScanningURI()}">${item.getScanning()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=<% out.print(products.getKey().toString()); %>"><% out.print(products.getValue().toString()); %></a></td>
-
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getActorURI()}">${item.getActorName()}</a></td>
-                            <td>${item.getTimespan()}</td>    
-                            <td>${item.getZoom()}</td>  
-                            <td>${item.getExposureTime()}</td>  
-                            <td>${item.getFilter()}</td>  
-                            <td>${item.getVoltage()}</td>  
+                            <td>${item.getFilter()}</td>
+                            <td>${item.getProtocol()}</td>
+                            <td>${item.getPreparationDateTime()}</td>
+                            <td>${item.getDescription()}</td>
+                            <td>${item.getScopeOfScan()}</td>
+                            <td>${item.getSampleHolder()}</td>
+                            <td>${item.getScanningMedium()}</td>
+                            <td>${item.getScannedPart()}</td>
+                            <td>${item.getActorName()}</td>
+                            <td>${item.getScanDate()}</td>
+                            <td>${item.getScanningDuration()}</td>
+                            <td>${item.getDeviceName()}</td>
+                            <td>${item.getVoltage()}</td>
+                            <td>${item.getCurrent()}</td>
+                            <td>${item.getZoom()}</td>
+                            <td>${item.getCameraResolution()}</td>
+                            <td>${item.getAveraging()}</td>
+                            <td>${item.getRandomMovement()}</td>
+                            <td>${item.getScanDegrees()}</td>
+                            <td>${item.getExposureTime()}</td>
+                            <td>${item.getOversizeSettings()}</td>
+                            <td>${item.getFileLocation()}</td>
+                            <td>${item.getSpecimen().getCollectionName()}</td>
+                            <td>${item.getSpecimen().getProviderName()}</td>
+                            <td>${item.getSpecimen().getInstitutionName()}</td>
+                            <td>${item.getSpecimen().getDescription()}</td>
+                            <td>${item.getSpecimen().getMaterial()}</td>
+                            <td>${item.getSpecimen().getSpeciesName()}</td>
+                            <td>${item.getSpecimen().getTaxonomicGroup()}</td>
+                            <td>${item.getSpecimen().getDimensionValue()}</td>
+                            <td>${item.getSpecimen().getFixationType()}</td>
+                            <td>${item.getSpecimen().getStoragePlace()}</td>
                         <tr/>
                     </c:forEach>
                 </tbody>
@@ -117,6 +160,7 @@
                     </ul>
                 </nav>            
             </c:if>
+            
             
         </div>
         

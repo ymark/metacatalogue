@@ -49,7 +49,7 @@ public class AdvancedSearch extends MyHttpServlet {
                     genus = null, family = null, order = null, phylum = null, class_ = null, kingdom = null,
                     cname = null, place = null, language = null, jspView = null, sname = null, synonym = null,
                     date = null, actor = null, individual = null,dimension = null,specimen = null, collection = null,
-                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null;
+                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null, filter=null;
             
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                        
             
@@ -176,16 +176,18 @@ public class AdvancedSearch extends MyHttpServlet {
                     break;
                 case "microct_scanning":  
                     species = getTextFormField(request,"species");
-                    specimen = getTextFormField(request,"specimen");
-                    device = getTextFormField(request,"device");
+                    filter = getTextFormField(request,"filter");
+//                    specimen = getTextFormField(request,"specimen");
+//                    device = getTextFormField(request,"device");
                     contrast = getTextFormField(request,"contrast");
-                    scanid = getTextFormField(request,"scanid");
+//                    scanid = getTextFormField(request,"scanid");
                     datasetURI = "";
                     request.setAttribute("species",species);
-                    request.setAttribute("specimen",specimen);
-                    request.setAttribute("device",device);                    
+//                    request.setAttribute("specimen",specimen);
+//                    request.setAttribute("device",device);                    
+                    request.setAttribute("filter",filter);
                     request.setAttribute("contrast",contrast);
-                    request.setAttribute("scanid",scanid);
+//                    request.setAttribute("scanid",scanid);
                     jspView = "mct_scanning.jsp";
                     break;
                 case "microct_reconstruction":  
@@ -301,7 +303,7 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchMicroCTSpecimen(specimen, collection,species, provider,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "microct_scanning":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchMicroCTScanning(device, specimen, species,contrast,scanid,datasetURI,offset,limit,this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchMicroCTScanning(species,filter,contrast,offset,limit,this.metadataGraph);
                     break;
                 case "microct_reconstruction":  
                     dservice = new MetadataRepositoryService(directoryManager).searchMicroCTReconstruction(species, specimen, input,datasetURI,offset,limit, this.metadataGraph);
@@ -346,6 +348,11 @@ public class AdvancedSearch extends MyHttpServlet {
             } else {
                 request.setAttribute("results",dservice);
             }
+            System.out.println("countresults: "+countResults);
+            System.out.println("startpage: "+startPage);
+            System.out.println("endpage: "+endPage);
+            System.out.println("ppm: "+this.ppm);
+            System.out.println("rpp: "+this.rpp);
             
             request.setAttribute("page",page);
             request.setAttribute("rpp",this.rpp);
@@ -354,6 +361,7 @@ public class AdvancedSearch extends MyHttpServlet {
             request.setAttribute("lastPage", lastPage);
             request.setAttribute("leftArrow",leftArrow);
             request.setAttribute("rightArrow",rightArrow);  
+            System.out.println("jspView: "+jspView);
             request.getRequestDispatcher("/query_results/"+jspView).forward(request, response);
             return;
         } catch (QueryExecutionException ex) {
