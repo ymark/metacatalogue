@@ -438,22 +438,28 @@
                                 </form>
                                 
                                 <form id="microct_scanning_form" class="form-horizontal" action="search/advanced/microct_scanning" method="get" style="display: none">
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label for="device" class="col-sm-3 control-label">Device</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="device" class="form-control">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
+                                    </div>-->
+<!--                                    <div class="form-group">
                                         <label for="specimen" class="col-sm-3 control-label">Specimen</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="specimen" class="form-control">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <label for="species" class="col-sm-3 control-label">Species</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="species" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="filter" class="col-sm-3 control-label">Filter</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="filter" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -462,12 +468,12 @@
                                             <input type="text" name="contrast" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+<!--                                    <div class="form-group">
                                         <label for="scanid" class="col-sm-3 control-label">Scan ID</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="scanid" class="form-control">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="form-group">
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <button type="submit" class="btn btn-default">Search</button>
