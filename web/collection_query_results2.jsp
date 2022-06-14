@@ -111,7 +111,7 @@
                             <td><a href="${baseUrl}/search/browse?uri=${item.getCuratorURI()}">${item.getCuratorName()}</a></td>                                                                     
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
-                                <a href="${baseUrl}/getDatasetFile?&datasetURI=${item.getDatasetURI()}">Download</a>                         
+                                <a href="${item.getDatasetID()}" target="_blank">Download</a>
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
@@ -143,7 +143,8 @@
                                                                             
                             <!--<td>${item.getEmbargoState()}</td>-->
                             <td>${item.getEmbargoPeriod()}</td>    
-                            <td style='text-align: left'>${item.getDatasetID()}</td>  
+                            <td><a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a></td>  
+                            
                         <tr/>
                     </c:forEach>
                 </tbody>
