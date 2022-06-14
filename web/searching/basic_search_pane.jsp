@@ -1,4 +1,25 @@
- <div role="tabpanel" class="tab-pane active" id="basicSearch">
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Collection"%>
+<%@page import="eu.lifewatchgreece.metacatalogue.controllers.ControlledVocabularies"%>
+
+<%
+//db connection test
+try{
+    ControlledVocabularies cv=new ControlledVocabularies();
+    cv.init(this.getServletConfig());
+    Collection<String>types=cv.getDatasetTypes();
+    request.setAttribute("dataset_types",types);
+}
+catch(Exception e){
+    out.print("Unable to retrieve dataset types "+e.getMessage());
+    request.setAttribute("dataset_types",new ArrayList<>());
+}
+%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div role="tabpanel" class="tab-pane active" id="basicSearch">
         <div class="row">
             <div class="col-sm-6">
                 <div class="row">
@@ -63,20 +84,10 @@
                         </div>
                         <div class="col-md-8">
                             <select class="form-control" name="datasetType">
-                                <option value="" selected>Not defined</option> 
-                                <option>Common Names Dataset</option>
-                                <option>Identification Dataset</option>
-                                <option>Genetics Dataset</option>                                   
-                                <option>MicroCT Dataset</option>
-                                <option>Morphological Characteristics Dataset</option> 
-                                <option>Morphometrics Dataset</option>                                                                                              
-                                <option>Occurrence Dataset</option> 
-                                <option>Scientific Naming Dataset</option> 
-                                <option>Specimen Info Dataset</option> 
-                                <option>Specimen Collections Dataset</option> 
-                                <option>Synonyms Dataset</option> 
-                                <option>Taxonomy Dataset</option>                                  
-                                <option>Temporary Aggregates Dataset</option>                                                                                                
+                                <option value="" selected>Not defined</option>
+                                <c:forEach var="dataset_type" items="${dataset_types}">                
+                                    <option><c:out value="${dataset_type}" /></option>
+                                </c:forEach>                                                                                              
                             </select>
                         </div>              
                     </div>
