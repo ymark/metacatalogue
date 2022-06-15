@@ -459,13 +459,27 @@
                                     <div class="form-group">
                                         <label for="filter" class="col-sm-3 control-label">Filter</label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="filter" class="form-control">
+                                            <select class="form-control" name="filter">
+                                                <option value="" selected>Not defined</option>
+                                                <option>None</option>
+                                                <option>Al 0.5mm</option>
+                                                <option>Aluminium foil, 2 layers</option>
+                                                <option>Al + Cu</option>
+<!--                                            <input type="text" name="filter" class="form-control">-->
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="contrast" class="col-sm-3 control-label">Enhancement Contrast Method</label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="contrast" class="form-control">
+                                            <select class="form-control" name="contrast">
+                                                <option value="" selected>Not defined</option>
+                                                <option>None</option>
+                                                <option>HDMS</option>
+                                                <option>Iodine</option>
+                                                <option>PTA</option>
+                                            </select>
+                                            <!--<input type="text" name="contrast" class="form-control">-->
                                         </div>
                                     </div>
 <!--                                    <div class="form-group">
