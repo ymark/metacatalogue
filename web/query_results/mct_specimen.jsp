@@ -47,8 +47,8 @@
                     <th>Row</th>
                     <th>Species</th>                    
                     <th>Provider</th>
+                    <th>Specimen ID</th> 
                     <th>Specimen</th> 
-                    <th>Related Dataset</th>
                     <th data-toggle="true"></th>
                     <th data-hide="all">Dataset Title</th>
                     <th data-hide="all">Collection</th>
@@ -62,16 +62,16 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}">${item.getSpeciesName()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getProviderURI()}">${item.getProviderName()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getSpecimenURI()}">${item.getSpecimenName()}</a></td>    
-                            <td><a href="${baseUrl}/search/directory?datasetName=&owner=&datasetURI=${item.getDatasetURI()}">View dataset</a></td>
+                            <td style="text-align: left">${item.getSpeciesName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
+                            <td style="text-align: left">${item.getProviderName()}</td>
+                            <td style="text-align: left">${item.getSpecimenID()}</td>    
+                            <td style="text-align: left">${item.getSpecimenName()}</td>    
                             <td><span class="footable-toggle"></span> More info</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getCollectionURI()}">${item.getCollectionName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getInstitutionURI()}">${item.getInstitutionName()}</a></td>                       
+                            <td>${item.getDatasetName()}</td>
+                            <td>${item.getCollectionName()}</td>
+                            <td>${item.getInstitutionName()}</td>                       
                             <td>${item.getDescription()}</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDimensionTypeURI()}">${item.getDimensionName()}</a></td>                                 
+                            <td>${item.getDimensionName()}</td>                                 
                             <td>${item.getDimensionUnit()}</td>
                             <td>${item.getDimensionValue()}</td> 
                         <tr/>
