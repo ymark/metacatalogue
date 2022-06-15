@@ -106,7 +106,8 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style='text-align: left'><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>                            
+                            <!--<td style='text-align: left'><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>-->
+                            <td style='text-align: left'>${item.getDatasetName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}"><img src="../images/list_view.png" title="Show with triple-browser"></img></a></td>
                             <td><a href="${baseUrl}/search/browse?uri=${item.getOwnerURI()}">${item.getOwnerName()}</a></td>
                             <td><a href="${baseUrl}/search/browse?uri=${item.getCuratorURI()}">${item.getCuratorName()}</a></td>                                                                     
                             <td style='text-align: left'>${item.getDatasetType()}</td>
