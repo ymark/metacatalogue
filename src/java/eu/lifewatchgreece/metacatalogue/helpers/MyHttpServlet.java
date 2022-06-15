@@ -27,8 +27,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -83,6 +85,7 @@ public class MyHttpServlet extends HttpServlet {
     protected String mysqlPwd;
     protected String mysqlUrl;
     protected Connection conn;
+    public static Set<String> datasetTypes;
     
     protected int rpp;  // results per page (for pagination)
     protected int ppm;  // pages per menu (for pagination)
@@ -136,6 +139,15 @@ public class MyHttpServlet extends HttpServlet {
         
         rpp = Integer.parseInt(settings.get("rpp"));
         ppm = Integer.parseInt(settings.get("ppm"));     
+        
+        try{
+            VirtuosoRepositoryManager repoManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
+            DirectoryService directoryService=new DirectoryService(repoManager);
+            datasetTypes=directoryService.retrieveDatasetTypes(directoryGraph);
+        }catch(RepositoryConnectionException | QueryExecutionException ex){
+            log.error("An error occured while retrieving the available dataset types");
+            datasetTypes=new HashSet<>();
+        }
         
         log.debug("Successfully initialized MyHttpServlet");
     }

@@ -21,12 +21,12 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ControlledVocabularies extends MyHttpServlet {
     
-    @Override
-    public void init(ServletConfig config ) throws ServletException{
-        log.debug("Initializing DirectorySearch Servlet");
-        super.init(config);   
-        log.debug("Successfully initialized DirectorySearch Servlet");
-    }
+//    @Override
+//    public void init(ServletConfig config ) throws ServletException{
+//        log.debug("Initializing DirectorySearch Servlet");
+//        super.init(config);   
+//        log.debug("Successfully initialized DirectorySearch Servlet");
+//    }
     
     public Collection<String> getDatasetTypes() throws ServletException {
         try{
