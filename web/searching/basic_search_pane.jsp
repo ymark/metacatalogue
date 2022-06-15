@@ -1,19 +1,18 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Collection"%>
+<%@page import="java.util.Set"%>
 <%@page import="eu.lifewatchgreece.metacatalogue.controllers.ControlledVocabularies"%>
+<%@page import="eu.lifewatchgreece.metacatalogue.helpers.MyHttpServlet"%>
 
 <%
-//db connection test
-try{
-    ControlledVocabularies cv=new ControlledVocabularies();
-    cv.init(this.getServletConfig());
-    Collection<String>types=cv.getDatasetTypes();
-    request.setAttribute("dataset_types",types);
-}
-catch(Exception e){
-    out.print("Unable to retrieve dataset types "+e.getMessage());
-    request.setAttribute("dataset_types",new ArrayList<>());
-}
+//    request.setAttribute("dataset_types", MyHttpServlet.datasetTypes);
+    ControlledVocabularies controlledVocabularies=new ControlledVocabularies();
+    if(controlledVocabularies.datasetTypes==null){
+        controlledVocabularies.init(this.getServletConfig());
+        Collection<String> datasetTypes=controlledVocabularies.getDatasetTypes();
+        request.setAttribute("dataset_types", datasetTypes);
+    }else{
+        request.setAttribute("dataset_types", controlledVocabularies.datasetTypes);
+    }
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -93,6 +93,7 @@
                             <td>${item.getSpecimen().getSpecimenID()}</td>
                             <td>${item.getSpecimen().getSpecimenName()}</td>
                             <td><span class="footable-toggle"></span> More info</td>
+                            <td>${item.getContrastMethod()}</td>
                             <td>${item.getFilter()}</td>
                             <td>${item.getProtocol()}</td>
                             <td>${item.getPreparationDateTime()}</td>
