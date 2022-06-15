@@ -89,7 +89,7 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td>${item.getScanningLabel()}</td>
+                            <td>${item.getScanningLabel()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getScanningURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
                             <td>${item.getSpecimen().getSpecimenID()}</td>
                             <td>${item.getSpecimen().getSpecimenName()}</td>
                             <td><span class="footable-toggle"></span> More info</td>
