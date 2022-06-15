@@ -475,7 +475,7 @@
                                             <select class="form-control" name="contrast">
                                                 <option value="" selected>Not defined</option>
                                                 <option>None</option>
-                                                <option>HDMS</option>
+                                                <option>HMDS</option>
                                                 <option>Iodine</option>
                                                 <option>PTA</option>
                                             </select>

@@ -229,7 +229,7 @@ public class MyHttpServlet extends HttpServlet {
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                                                
             
             // Search and retrieve the results
-            List<DirectoryStruct> dservice = new DirectoryService(directoryManager).searchDataset(dataset_name,"","","","","","",-1,-1,directoryGraph);                        
+            List<DirectoryStruct> dservice = new DirectoryService(directoryManager).searchDataset("",dataset_name,"","","","","","",-1,-1,directoryGraph);                        
             
             DirectoryStruct dataset;
             if(dservice.size() > 0){

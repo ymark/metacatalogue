@@ -46,6 +46,7 @@ public class DirectorySearch extends MyHttpServlet {
         String institution = getTextFormField(request,"institution");
         String creator = getTextFormField(request,"creator");
         String dataset_name = getTextFormField(request,"datasetName");
+        String dataset_uri=getTextFormField(request,"datasetURI");
         String dataset_type = getTextFormField(request,"datasetType");
         String dataset_location = getTextFormField(request,"location");
         String dataset_taxonomic_coverage = getTextFormField(request,"taxonomicCoverage");
@@ -71,7 +72,7 @@ public class DirectorySearch extends MyHttpServlet {
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_name, institution, creator,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);                                    
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_uri,dataset_name, institution, creator,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);
             
             int countResults = results.size();                                      // Pagination-related
             int startPage = ((int) Math.ceil(page/(double) this.ppm) - 1)*this.ppm + 1;   // Pagination-related
@@ -108,6 +109,7 @@ public class DirectorySearch extends MyHttpServlet {
             request.setAttribute("taxonomicCoverage",dataset_taxonomic_coverage);
             request.setAttribute("dateCoverage",dataset_date);
             request.setAttribute("datasetType",dataset_type);
+            request.setAttribute("datasetURI",dataset_uri);
             
             request.getRequestDispatcher("/collection_query_results2.jsp").forward(request, response);
         }
