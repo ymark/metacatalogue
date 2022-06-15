@@ -140,14 +140,14 @@ public class MyHttpServlet extends HttpServlet {
         rpp = Integer.parseInt(settings.get("rpp"));
         ppm = Integer.parseInt(settings.get("ppm"));     
         
-        try{
-            VirtuosoRepositoryManager repoManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
-            DirectoryService directoryService=new DirectoryService(repoManager);
-            datasetTypes=directoryService.retrieveDatasetTypes(directoryGraph);
-        }catch(RepositoryConnectionException | QueryExecutionException ex){
-            log.error("An error occured while retrieving the available dataset types");
-            datasetTypes=new HashSet<>();
-        }
+//        try{
+//            VirtuosoRepositoryManager repoManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);
+//            DirectoryService directoryService=new DirectoryService(repoManager);
+//            datasetTypes=directoryService.retrieveDatasetTypes(directoryGraph);
+//        }catch(RepositoryConnectionException | QueryExecutionException ex){
+//            log.error("An error occured while retrieving the available dataset types");
+//            datasetTypes=new HashSet<>();
+//        }
         
         log.debug("Successfully initialized MyHttpServlet");
     }
