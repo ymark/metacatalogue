@@ -106,10 +106,9 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <!--<td style='text-align: left'><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>-->
                             <td style='text-align: left'>${item.getDatasetName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}"><img src="../images/list_view.png" title="Show with triple-browser"></img></a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getOwnerURI()}">${item.getOwnerName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getCuratorURI()}">${item.getCuratorName()}</a></td>                                                                     
+                            <td>${item.getOwnerName()}</td>
+                            <td>${item.getCuratorName()}</td>
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
                                 <a href="${item.getDatasetID()}" target="_blank">Download</a>
@@ -120,10 +119,10 @@
                             <td>${item.getContactPoint()}</td>
                             <td>${item.getAccessMethod()}</td>
                             <td>${item.getDescription()}</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getKeeperURI()}">${item.getKeeperName()}</a></td>
+                            <td>${item.getKeeperName()}</td>
                             <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
                             <td>${item.getPublicationDate()}</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getCreatorURI()}">${item.getCreatorName()}</a></td>
+                            <td>${item.getCreatorName()}</td>
                             <td>${item.getCreationDate()}</td>
                             
                             <c:choose>
@@ -131,12 +130,12 @@
                                     <td>-</td>
                                 </c:when>    
                                 <c:otherwise>
-                                    <td><a href="${baseUrl}/search/browse?uri=${item.getContributors().get(0).getKey()}">${item.getContributors().get(0).getValue()}</a></td>
+                                    <td>${item.getContributors().get(0).getValue()}</td>
                                 </c:otherwise>
                             </c:choose>   
                                     
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getAccessRightsURI()}">${item.getAccessRights()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getRightsHolderURI()}">${item.getRightsHolderName()}</a></td>
+                            <td>${item.getAccessRights()}</td>
+                            <td>${item.getRightsHolderName()}</td>
                
                             <td>${item.getGeographicCoverage()}</td>
                             <td>${item.getTaxonomicCoverage()}</td>
