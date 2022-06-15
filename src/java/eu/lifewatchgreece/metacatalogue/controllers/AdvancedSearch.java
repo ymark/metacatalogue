@@ -348,11 +348,6 @@ public class AdvancedSearch extends MyHttpServlet {
             } else {
                 request.setAttribute("results",dservice);
             }
-            System.out.println("countresults: "+countResults);
-            System.out.println("startpage: "+startPage);
-            System.out.println("endpage: "+endPage);
-            System.out.println("ppm: "+this.ppm);
-            System.out.println("rpp: "+this.rpp);
             
             request.setAttribute("page",page);
             request.setAttribute("rpp",this.rpp);
