@@ -56,7 +56,7 @@
                     <th>Owner</th>
                     <th>Curator</th>                               
                     <th style="text-align: left">Dataset Type</th>
-                    <th>Download Dataset</th>
+                    <th>View Dataset</th>
                     <th data-toggle="true"></th>
                     
                     <th data-hide="all" style="text-align: left">Dataset URI</th>
@@ -90,7 +90,7 @@
                             <td>${item.getCuratorName()}</td>
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
-                                <a href="${item.getDatasetID()}" target="_blank">Download</a>
+                                <a href="${item.getDatasetID()}" target="_blank">View</a>
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
