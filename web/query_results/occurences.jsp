@@ -48,22 +48,27 @@
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         
         <!-- Metacatalogue Top Bar : START -->
-        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">
-            <div style="float: left">
-                <img src="${baseUrl}/images/data_services.png" style="width: 50px">
-            </div>
+        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Dataset Catalogue Service
+                Advanced Search - Occurrence Results
             </div>
-            <c:if test = "${canManage.equals('yes')}">
-    
-                <img src="${baseUrl}/images/search.png" class="my-speed-button-selected">
-                <a href="${baseUrl}/publish">
-                    <img src="${baseUrl}/images/edit.png" class="my-speed-button">
+                <a href="${baseUrl}/searching/full_search_pane.jsp">
+                    <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
+                </a> 
+                <a href="${baseUrl}/searching/sparql_search_pane.jsp">
+                    <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
+                </a> 
+                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+                    <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
+                </a> 
+                <a href="${baseUrl}/searching/advanced_search_pane.jsp">
+                    <img src="${baseUrl}/images/refine.png" class="my-speed-button-selected" title="Advanced Search">
+                </a>    
+                <a href="${baseUrl}/">
+                    <img src="${baseUrl}/images/search.png" class="my-speed-button" title="Basic Search">
                 </a>
-            </c:if>            
             <div style="clear: both"></div>
-        </div>     
+        </div>  
         <!-- Metacatalogue Top Bar : END -->
         
         <div class="results_wrapper" id="results_wrapper_div">

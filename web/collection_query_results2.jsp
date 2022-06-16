@@ -24,47 +24,26 @@
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         
         <!-- Metacatalogue Top Bar : START -->
-        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">
-            <div style="float: left">
-                <img src="${baseUrl}/images/data_services.png" style="width: 50px">
-            </div>
+            
+        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Dataset Catalogue Service
+                Basic Search - Results
             </div>
-            <c:if test = "${canManage.equals('yes')}">
-    
-                <a href="${baseUrl}">
-                    <img src="${baseUrl}/images/search.png" class="my-speed-button-selected" title="search">
-                </a>   
-                
-                <a href="${baseUrl}/publish">
-                    <img src="${baseUrl}/images/edit.png" class="my-speed-button" title="publish">
+                <a href="${baseUrl}/searching/full_search_pane.jsp">
+                    <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
+                </a> 
+                <a href="${baseUrl}/searching/sparql_search_pane.jsp">
+                    <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
+                </a> 
+                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+                    <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
+                </a> 
+                <a href="${baseUrl}/searching/advanced_search_pane.jsp">
+                    <img src="${baseUrl}/images/refine.png" class="my-speed-button" title="Advanced Search">
+                </a>    
+                <a href="${baseUrl}/">
+                    <img src="${baseUrl}/images/search.png" class="my-speed-button-selected" title="Basic Search">
                 </a>
-            </c:if>            
-            <c:if test = "${canAdministrate.equals('yes')}">    
-                <a href="${baseUrl}/admin/configure">
-                    <img src="${baseUrl}/images/administrate.png" class="my-speed-button" title="system configuration">
-                </a> 
-                <a href="${baseUrl}/admin/recovery">
-                    <img src="${baseUrl}/images/recover.png" class="my-speed-button" title="recovery">
-                </a> 
-            </c:if> 
-            <a href="${baseUrl}/annotatation">
-                <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="annotate">
-            </a>                
-            <a href="${baseUrl}/refinement">
-                <img src="${baseUrl}/images/refine.png" class="my-speed-button" title="refine">
-            </a>                
-            <a href="${baseUrl}/documents">
-                <img src="${baseUrl}/images/documents.png" class="my-speed-button" title="documents">
-            </a>
-            
-            <c:if test = "${canAdministrate.equals('yes')}">    
-                <a href="${baseUrl}/admin/logs">
-                    <img src="${baseUrl}/images/logs.png" class="my-speed-button" title="Recent Logs">
-                </a>                
-            </c:if>
-            
             <div style="clear: both"></div>
         </div>     
         <!-- Metacatalogue Top Bar : END -->
@@ -77,7 +56,7 @@
                     <th>Owner</th>
                     <th>Curator</th>                               
                     <th style="text-align: left">Dataset Type</th>
-                    <th>Download Dataset</th>
+                    <th>View Dataset</th>
                     <th data-toggle="true"></th>
                     
                     <th data-hide="all" style="text-align: left">Dataset URI</th>
@@ -111,7 +90,7 @@
                             <td>${item.getCuratorName()}</td>
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
-                                <a href="${item.getDatasetID()}" target="_blank">Download</a>
+                                <a href="${item.getDatasetID()}" target="_blank">View</a>
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
