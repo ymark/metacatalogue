@@ -396,18 +396,6 @@
                                 </form>
                                 
                                 <form id="microct_scanning_form" class="form-horizontal" action="../search/advanced/microct_scanning" method="get" style="display: none">
-<!--                                    <div class="form-group">
-                                        <label for="device" class="col-sm-3 control-label">Device</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="device" class="form-control">
-                                        </div>
-                                    </div>-->
-<!--                                    <div class="form-group">
-                                        <label for="specimen" class="col-sm-3 control-label">Specimen</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="specimen" class="form-control">
-                                        </div>
-                                    </div>-->
                                     <div class="form-group">
                                         <label for="species" class="col-sm-3 control-label">Species</label>
                                         <div class="col-sm-4">
@@ -419,11 +407,12 @@
                                         <div class="col-sm-4">
                                             <select class="form-control" name="filter">
                                                 <option value="" selected>Not defined</option>
-                                                <option>None</option>
-                                                <option>Al 0.5mm</option>
-                                                <option>Aluminium foil, 2 layers</option>
+                                                <option>Al 0.5 mm</option>
                                                 <option>Al + Cu</option>
-<!--                                            <input type="text" name="filter" class="form-control">-->
+                                                <option>Aluminium foil, 1 layer</option>
+                                                <option>Aluminium foil, 2 layers</option>
+                                                <option>None</option>
+                                                <option>Unknown</option>
                                             </select>
                                         </div>
                                     </div>
@@ -432,10 +421,15 @@
                                         <div class="col-sm-4">
                                             <select class="form-control" name="contrast">
                                                 <option value="" selected>Not defined</option>
-                                                <option>None</option>
                                                 <option>HMDS</option>
+                                                <option>HMDS and PTA</option>
                                                 <option>Iodine</option>
+                                                <option>Iodine and HMDS</option>
+                                                <option>PMA</option>
                                                 <option>PTA</option>
+                                                <option>PTA and IODINE</option>
+                                                <option>None</option>
+                                                <option>Unknown</option>
                                             </select>
                                             <!--<input type="text" name="contrast" class="form-control">-->
                                         </div>
