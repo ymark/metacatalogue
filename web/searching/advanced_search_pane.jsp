@@ -56,8 +56,8 @@
                                                 <option value="measurement">Morphometrics</option> 
                                                 <option value="microct_specimen">MicroCT Specimen</option> 
                                                 <option value="microct_scanning">MicroCT Scanning</option>
-                                                <option value="microct_reconstruction">MicroCT Reconstruction</option>
-                                                <option value="microct_postprocessing">MicroCT Post Processing</option>
+<!--                                                <option value="microct_reconstruction">MicroCT Reconstruction</option>
+                                                <option value="microct_postprocessing">MicroCT Post Processing</option>-->
                                                 <option value="morphometric">Morphological Characteristics</option>
                                                 <option value="temp_stats">Occurrence Statistics</option>
                                                 <option value="scientific_name">Scientific Name</option> 
@@ -447,7 +447,7 @@
                                     </div>
                                 </form>
                                 
-                                <form id="microct_reconstruction_form" class="form-horizontal" action="../search/advanced/microct_reconstruction" method="get" style="display: none">
+<!--                                <form id="microct_reconstruction_form" class="form-horizontal" action="../search/advanced/microct_reconstruction" method="get" style="display: none">
                                     <div class="form-group">
                                         <label for="input" class="col-sm-3 control-label">Input</label>
                                         <div class="col-sm-4">
@@ -497,7 +497,7 @@
                                             <button type="submit" class="btn btn-default">Search</button>
                                         </div>
                                     </div>
-                                </form>
+                                </form>-->
                                 
                                 <form id="genetics_form" class="form-horizontal" action="../search/advanced/genetics" method="get" style="display: none">
                                     <div class="form-group">

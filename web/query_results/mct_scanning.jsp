@@ -78,7 +78,7 @@
                     <th data-hide="all">Scan (360 or 180)</th>
                     <th data-hide="all">Exposure time (ms)</th>
                     <th data-hide="all">Oversize settings</th>
-                    <th data-hide="all">File location</th>
+<!--                    <th data-hide="all">File location</th>-->
                     <th data-hide="all">Collection code</th>
                     <th data-hide="all">Specimen provider</th>
                     <th data-hide="all">Specimen provider institute</th>
@@ -120,7 +120,7 @@
                             <td>${item.getScanDegrees()}</td>
                             <td>${item.getExposureTime()}</td>
                             <td>${item.getOversizeSettings()}</td>
-                            <td>${item.getFileLocation()}</td>
+                            <!--<td>${item.getFileLocation()}</td>-->
                             <td>${item.getSpecimen().getCollectionName()}</td>
                             <td>${item.getSpecimen().getProviderName()}</td>
                             <td>${item.getSpecimen().getInstitutionName()}</td>
