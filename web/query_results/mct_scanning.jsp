@@ -18,6 +18,7 @@
         <script type="text/javascript" src="${baseUrl}/js/footable.js"></script>
         <link rel="stylesheet" href="${baseUrl}/css/footable.core.css" />
         <link rel="stylesheet" href="${baseUrl}/css/custom.css" />
+        <link rel="stylesheet" href="${baseUrl}/css/hover.css"/>
     </head>
     <body>
         
@@ -52,12 +53,12 @@
             <table class="footable table table-bordered" >
                 <thead>
                     <th>Row</th>
-                    <th>Scan ID</th>
+                    <th><span class="hovertext" data-hover="Hello, this is the tooltip">Scan ID </span></th>
                     <th>Specimen ID</th>
                     <th>Specimen Name</th>
                     <th data-toggle="true"></th>
                     <th data-hide="all">Enhancement Contrast Method</th>
-                    <th data-hide="all">Filter</th>                                 
+                    <th data-hide="all">Filter</th>
                     <th data-hide="all">Protocol</th>
                     <th data-hide="all">Preparation Date/Time</th>
                     <th data-hide="all">Preparation Notes</th>
@@ -94,43 +95,184 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td>${item.getScanningLabel()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getScanningURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
-                            <td>${item.getSpecimen().getSpecimenID()}</td>
-                            <td>${item.getSpecimen().getSpecimenName()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="A unique identifier for the specimen in the format: mCT0000x (where x = incrementing number, always with preceding zeros)">
+                                    ${item.getScanningLabel()}&nbsp;
+                                </span>
+                                <a href="${baseUrl}/search/browse?uri=${item.getScanningURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A unique code of the format scan0000x (where x=incrementing number)">
+                                    ${item.getSpecimen().getSpecimenID()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Original label on specimen vial. If the label does not exist the corresponding unique code is shown">
+                                    ${item.getSpecimen().getSpecimenName()}
+                                </span>
+                            </td>
                             <td><span class="footable-toggle"></span> More info</td>
-                            <td>${item.getContrastMethod()}</td>
-                            <td>${item.getFilter()}</td>
-                            <td>${item.getProtocol()}</td>
-                            <td>${item.getPreparationDateTime()}</td>
-                            <td>${item.getDescription()}</td>
-                            <td>${item.getScopeOfScan()}</td>
-                            <td>${item.getSampleHolder()}</td>
-                            <td>${item.getScanningMedium()}</td>
-                            <td>${item.getScannedPart()}</td>
-                            <td>${item.getActorName()}</td>
-                            <td>${item.getScanDate()}</td>
-                            <td>${item.getScanningDuration()}</td>
-                            <td>${item.getDeviceName()}</td>
-                            <td>${item.getVoltage()}</td>
-                            <td>${item.getCurrent()}</td>
-                            <td>${item.getZoom()}</td>
-                            <td>${item.getCameraResolution()}</td>
-                            <td>${item.getAveraging()}</td>
-                            <td>${item.getRandomMovement()}</td>
-                            <td>${item.getScanDegrees()}</td>
-                            <td>${item.getExposureTime()}</td>
-                            <td>${item.getOversizeSettings()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="Short name of chemical used">
+                                    ${item.getContrastMethod()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Description of the filter used">
+                                    ${item.getFilter()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Detailed protocol of the contrast enhancement method, can be a reference to a paper">
+                                    ${item.getProtocol()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Date/Time range of the preparation in the form: [Begin Date/Time  - End Date/Time]">
+                                    ${item.getPreparationDateTime()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Any other notes on the specimen preparation process">
+                                    ${item.getDescription()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Description of the scope of scan">
+                                    ${item.getScopeOfScan()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A description of the sample holder">
+                                    ${item.getSampleHolder()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The medium that surrounds the sample">
+                                    ${item.getScanningMedium()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="(Body) part of the specimen that has been scanned">
+                                    ${item.getScannedPart()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The person who performed the scan">
+                                    ${item.getActorName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Date of the begin of the scanning process">
+                                    ${item.getScanDate()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The duration of the scan in the format HH:MM">
+                                    ${item.getScanningDuration()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The instrument on which the scan was performed. Usually this will be SkyScan 1172">
+                                    ${item.getDeviceName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The voltage in kilovolt (kV)">
+                                    ${item.getVoltage()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The current in μAmpere (uA)">
+                                    ${item.getCurrent()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Resolution of the scan in μm (Zoom level)">
+                                    ${item.getZoom()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Camera resolution settings">
+                                    ${item.getCameraResolution()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Frame averaging value">
+                                    ${item.getAveraging()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Random movement value">
+                                    ${item.getRandomMovement()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="360° or 180° scan">
+                                    ${item.getScanDegrees()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Exposure time in milliseconds. This can be either seen from the flat field settings or from the log file of the scan">
+                                    ${item.getExposureTime()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Number of oversize parts (vertical & horizontal)">
+                                    ${item.getOversizeSettings()}
+                                </span>
+                            </td>
                             <!--<td>${item.getFileLocation()}</td>-->
-                            <td>${item.getSpecimen().getCollectionName()}</td>
-                            <td>${item.getSpecimen().getProviderName()}</td>
-                            <td>${item.getSpecimen().getInstitutionName()}</td>
-                            <td>${item.getSpecimen().getDescription()}</td>
-                            <td>${item.getSpecimen().getMaterial()}</td>
-                            <td>${item.getSpecimen().getSpeciesName()}</td>
-                            <td>${item.getSpecimen().getTaxonomicGroup()}</td>
-                            <td>${item.getSpecimen().getDimensionValue()}</td>
-                            <td>${item.getSpecimen().getFixationType()}</td>
-                            <td>${item.getSpecimen().getStoragePlace()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="Original collection code of the specimen">
+                                    ${item.getSpecimen().getCollectionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The person who provided the specimen">
+                                    ${item.getSpecimen().getProviderName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The institution which provided the specimen">
+                                    ${item.getSpecimen().getInstitutionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A verbatim description of the specimen, which allows to understand the nature of the specimen at a glance">
+                                    ${item.getSpecimen().getDescription()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The actual material of the specimen">
+                                    ${item.getSpecimen().getMaterial()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The lowest taxonomic name to which the specimen has been identified">
+                                    ${item.getSpecimen().getSpeciesName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The taxonomic group to which the specimen has been identified">
+                                    ${item.getSpecimen().getTaxonomicGroup()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Max. length of specimen. If difficult to measure, it is an approximation">
+                                    ${item.getSpecimen().getDimensionValue()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Original fixation type of the specimen">
+                                    ${item.getSpecimen().getFixationType()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Final storage place of the specimen after scan has finished">
+                                    ${item.getSpecimen().getStoragePlace()}
+                                </span>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>

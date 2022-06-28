@@ -16,6 +16,7 @@
         <script type="text/javascript" src="${baseUrl}/js/footable.js"></script>
         <link rel="stylesheet" href="${baseUrl}/css/footable.core.css" />
         <link rel="stylesheet" href="${baseUrl}/css/custom.css" />
+        <link rel="stylesheet" href="${baseUrl}/css/hover.css"/>
     </head>
     <body>
         
@@ -55,7 +56,7 @@
                     <th>Specimen ID</th> 
                     <th>Specimen</th> 
                     <th data-toggle="true"></th>
-                    <th data-hide="all">Dataset Title</th>
+                    <!--<th data-hide="all">Dataset Title</th>-->
                     <th data-hide="all">Collection</th>
                     <th data-hide="all">Institution</th>   
                     <th data-hide="all">Description</th>            
@@ -67,18 +68,59 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left">${item.getSpeciesName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
-                            <td style="text-align: left">${item.getProviderName()}</td>
-                            <td style="text-align: left">${item.getSpecimenID()}</td>    
-                            <td style="text-align: left">${item.getSpecimenName()}</td>    
+                            <td style="text-align: left">
+                                <span class="hovertext" data-hover="The lowest taxonomic name to which the specimen has been identified">
+                                    ${item.getSpeciesName()}&nbsp;
+                                </span>
+                                <a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a>
+                            </td>
+                            <td style="text-align: left">
+                                <span class="hovertext" data-hover="The person who provided the specimen">
+                                    ${item.getProviderName()}
+                                </span>
+                            </td>
+                            <td style="text-align: left">
+                                <span class="hovertext" data-hover="A unique identifier for the specimen in the format: mCT0000x (where x = incrementing number, always with preceding zeros)">
+                                    ${item.getSpecimenID()}
+                                </span>
+                            </td>    
+                            <td style="text-align: left">
+                                <span class="hovertext" data-hover="Original label on specimen vial. If the label does not exist the corresponding unique code is shown">
+                                    ${item.getSpecimenName()}
+                                </span>
+                            </td>
                             <td><span class="footable-toggle"></span> More info</td>
-                            <td>${item.getDatasetName()}</td>
-                            <td>${item.getCollectionName()}</td>
-                            <td>${item.getInstitutionName()}</td>                       
-                            <td>${item.getDescription()}</td>
-                            <td>${item.getDimensionName()}</td>                                 
-                            <td>${item.getDimensionUnit()}</td>
-                            <td>${item.getDimensionValue()}</td> 
+                            <!--<td>${item.getDatasetName()}</td>-->
+                            <td>
+                                <span class="hovertext" data-hover="Original collection code of the specimen">
+                                    ${item.getCollectionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The institution which provided the specimen">
+                                    ${item.getInstitutionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A verbatim description of the specimen, which allows to understand the nature of the specimen at a glance">
+                                    ${item.getDescription()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The type of measured dimension of the specimen">
+                                    ${item.getDimensionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The unit of the measured dimension of the specimen">
+                                    ${item.getDimensionUnit()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The value of the measured dimension of the specimen">
+                                    ${item.getDimensionValue()}
+                                </span>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>
