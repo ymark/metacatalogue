@@ -58,8 +58,6 @@
                     <th style="text-align: left">Dataset Type</th>
                     <th>View Dataset</th>
                     <th data-toggle="true"></th>
-                    
-                    <th data-hide="all" style="text-align: left">Dataset URI</th>
                     <th data-hide="all">Contact Point</th>
                     <th data-hide="all">Access Method</th>
                     <th data-hide="all">Description</th>
@@ -93,7 +91,6 @@
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
-                            <td style='text-align: left'><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetURI()}</a></td>
                             <td>${item.getContactPoint()}</td>
                             <td>${item.getAccessMethod()}</td>
                             <td>${item.getDescription()}</td>
