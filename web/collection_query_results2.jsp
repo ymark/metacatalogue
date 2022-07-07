@@ -64,12 +64,12 @@
                     <th data-hide="all">Access Method</th>
                     <th data-hide="all">Description</th>
                     
-                    <th data-hide="all">Keeper</th>
+                    <th data-hide="all">Owner</th>
 <!--                    <th data-hide="all">Publisher</th>-->
                     <th data-hide="all">Publication Date</th>
                     <th data-hide="all">Creator</th>
                     <th data-hide="all">Creation Date</th>
-                    <th data-hide="all">Contributor</th>
+                    <th data-hide="all">Metadata Provider</th>
                     <th data-hide="all">Access Rights</th>
                     <th data-hide="all">Rights Holder</th>
                 
