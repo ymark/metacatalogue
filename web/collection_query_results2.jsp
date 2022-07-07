@@ -78,7 +78,7 @@
                     <th data-hide="all">Temporal Coverage</th>
                     <th data-hide="all">Embargo Period</th>
                     
-                    <th data-hide="all" style="text-align: left">Dataset ID</th> 
+                    <th data-hide="all" style="text-align: left">Dataset URL</th> 
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
