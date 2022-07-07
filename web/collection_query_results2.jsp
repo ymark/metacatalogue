@@ -68,7 +68,6 @@
 <!--                    <th data-hide="all">Publisher</th>-->
                     <th data-hide="all">Publication Date</th>
                     <th data-hide="all">Creator</th>
-                    <th data-hide="all">Creation Date</th>
                     <th data-hide="all">Metadata Provider</th>
                     <th data-hide="all">Access Rights</th>
                     <th data-hide="all">Rights Holder</th>
@@ -102,7 +101,6 @@
                             <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
                             <td>${item.getPublicationDate()}</td>
                             <td>${item.getCreatorName()}</td>
-                            <td>${item.getCreationDate()}</td>
                             
                             <c:choose>
                                 <c:when test="${item.getContributors().isEmpty()}">
