@@ -58,18 +58,15 @@
                     <th style="text-align: left">Dataset Type</th>
                     <th>View Dataset</th>
                     <th data-toggle="true"></th>
-                    
-                    <th data-hide="all" style="text-align: left">Dataset URI</th>
                     <th data-hide="all">Contact Point</th>
                     <th data-hide="all">Access Method</th>
                     <th data-hide="all">Description</th>
                     
-                    <th data-hide="all">Keeper</th>
+                    <th data-hide="all">Owner</th>
 <!--                    <th data-hide="all">Publisher</th>-->
                     <th data-hide="all">Publication Date</th>
                     <th data-hide="all">Creator</th>
-                    <th data-hide="all">Creation Date</th>
-                    <th data-hide="all">Contributor</th>
+                    <th data-hide="all">Metadata Provider</th>
                     <th data-hide="all">Access Rights</th>
                     <th data-hide="all">Rights Holder</th>
                 
@@ -78,8 +75,9 @@
                     <th data-hide="all">Taxonomic Coverage</th>
                     <th data-hide="all">Temporal Coverage</th>
                     <th data-hide="all">Embargo Period</th>
-                    
-                    <th data-hide="all" style="text-align: left">Dataset ID</th> 
+                    <th data-hide="all">Keywords</th>
+                    <th data-hide="all">How to Cite</th>
+                    <th data-hide="all" style="text-align: left">Dataset URL</th> 
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
@@ -94,7 +92,6 @@
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
-                            <td style='text-align: left'><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetURI()}</a></td>
                             <td>${item.getContactPoint()}</td>
                             <td>${item.getAccessMethod()}</td>
                             <td>${item.getDescription()}</td>
@@ -102,7 +99,6 @@
                             <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
                             <td>${item.getPublicationDate()}</td>
                             <td>${item.getCreatorName()}</td>
-                            <td>${item.getCreationDate()}</td>
                             
                             <c:choose>
                                 <c:when test="${item.getContributors().isEmpty()}">
@@ -119,9 +115,9 @@
                             <td>${item.getGeographicCoverage()}</td>
                             <td>${item.getTaxonomicCoverage()}</td>
                             <td>${item.getTemporalCoverage()}</td>
-                                                                            
-                            <!--<td>${item.getEmbargoState()}</td>-->
-                            <td>${item.getEmbargoPeriod()}</td>    
+                            <td>${item.getEmbargoPeriod()}</td>   
+                            <td>${item.getKeywordsUserFriendly()}</td>   
+                            <td>${item.getCitation()}</td>   
                             <td><a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a></td>  
                             
                         <tr/>

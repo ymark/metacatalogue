@@ -102,6 +102,7 @@ public class MyHttpServlet extends HttpServlet {
         mysqlPwd = config.getServletContext().getInitParameter("mysqlPwd"); 
         mysqlUrl = config.getServletContext().getInitParameter("mysqlUrl");                
         baseUrl = config.getServletContext().getInitParameter("metacatalogueBaseUrl"); 
+        config.getServletContext().setAttribute("baseUrl", baseUrl);
         
         // Load dynamic settings from database
         settings = new HashMap<String,String>();
