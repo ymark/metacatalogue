@@ -75,7 +75,8 @@
                     <th data-hide="all">Taxonomic Coverage</th>
                     <th data-hide="all">Temporal Coverage</th>
                     <th data-hide="all">Embargo Period</th>
-                    
+                    <th data-hide="all">Keywords</th>
+                    <th data-hide="all">How to Cite</th>
                     <th data-hide="all" style="text-align: left">Dataset URL</th> 
                 </thead>
                 <tbody>
@@ -114,9 +115,9 @@
                             <td>${item.getGeographicCoverage()}</td>
                             <td>${item.getTaxonomicCoverage()}</td>
                             <td>${item.getTemporalCoverage()}</td>
-                                                                            
-                            <!--<td>${item.getEmbargoState()}</td>-->
-                            <td>${item.getEmbargoPeriod()}</td>    
+                            <td>${item.getEmbargoPeriod()}</td>   
+                            <td>${item.getKeywordsUserFriendly()}</td>   
+                            <td>${item.getCitation()}</td>   
                             <td><a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a></td>  
                             
                         <tr/>
