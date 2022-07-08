@@ -88,7 +88,14 @@
                             <td>${item.getCuratorName()}</td>
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
-                                <a href="${item.getDatasetID()}" target="_blank">View</a>
+                                <c:choose>
+                                    <c:when test="${!item.getDatasetID().isEmpty()}">
+                                        <a href="${item.getDatasetID()}" target="_blank">View</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        --
+                                    </c:otherwise>
+                                </c:choose>   
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
