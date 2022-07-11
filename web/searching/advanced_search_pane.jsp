@@ -49,22 +49,22 @@
                                             <div class="col-sm-5">
                                             <select class="form-control" id="searchType" name="searchType">
                                                 <option value="occurence" selected>Occurrence</option> 
-                                                <option value="common_name">Common name</option> 
+                                                <!--<option value="common_name">Common name</option>--> 
                                                 <option value="environmental">Environmental</option> 
-                                                <option value="genetics">Genetics</option> 
-                                                <option value="identification">Identification</option>
-                                                <option value="measurement">Morphometrics</option> 
+                                                <!--<option value="genetics">Genetics</option>--> 
+                                                <!--<option value="identification">Identification</option>-->
+                                                <!--<option value="measurement">Morphometrics</option>--> 
                                                 <option value="microct_specimen">MicroCT Specimen</option> 
                                                 <option value="microct_scanning">MicroCT Scanning</option>
 <!--                                                <option value="microct_reconstruction">MicroCT Reconstruction</option>
                                                 <option value="microct_postprocessing">MicroCT Post Processing</option>-->
-                                                <option value="morphometric">Morphological Characteristics</option>
-                                                <option value="temp_stats">Occurrence Statistics</option>
+                                                <!--<option value="morphometric">Morphological Characteristics</option>-->
+                                                <!--<option value="temp_stats">Occurrence Statistics</option>-->
                                                 <option value="scientific_name">Scientific Name</option> 
-                                                <option value="specimen">Specimen</option> 
-                                                <option value="specimen_collection">Specimen Collection</option>
-                                                <option value="statistical">Statistical</option> 
-                                                <option value="synoym">Synonyms</option> 
+                                                <!--<option value="specimen">Specimen</option>--> 
+                                                <!--<option value="specimen_collection">Specimen Collection</option>-->
+                                                <!--<option value="statistical">Statistical</option>--> 
+                                                <!--<option value="synoym">Synonyms</option>--> 
                                                 <option value="taxonomy">Taxonomy</option>                                                 
                                             </select>
                                             </div>
