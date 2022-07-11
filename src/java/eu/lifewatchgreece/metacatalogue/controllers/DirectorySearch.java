@@ -50,7 +50,8 @@ public class DirectorySearch extends MyHttpServlet {
         String dataset_type = getTextFormField(request,"datasetType");
         String dataset_location = getTextFormField(request,"location");
         String dataset_taxonomic_coverage = getTextFormField(request,"taxonomicCoverage");
-        String dataset_date = getTextFormField(request,"dateCoverage");
+        String dataset_date_from = getTextFormField(request,"dateCoverageFrom");
+        String dataset_date_until = getTextFormField(request,"dateCoverageTo");
         
         try
         {
@@ -72,7 +73,7 @@ public class DirectorySearch extends MyHttpServlet {
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_uri,dataset_name, institution, creator,dataset_type,dataset_location, dataset_date, dataset_taxonomic_coverage, limit,offset,directoryGraph);
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_uri,dataset_name, institution, creator,dataset_type,dataset_location, dataset_date_from, dataset_date_until, dataset_taxonomic_coverage, limit,offset,directoryGraph);
             
             int countResults = results.size();                                      // Pagination-related
             int startPage = ((int) Math.ceil(page/(double) this.ppm) - 1)*this.ppm + 1;   // Pagination-related
@@ -107,7 +108,8 @@ public class DirectorySearch extends MyHttpServlet {
             request.setAttribute("creator",creator);
             request.setAttribute("location",dataset_location);
             request.setAttribute("taxonomicCoverage",dataset_taxonomic_coverage);
-            request.setAttribute("dateCoverage",dataset_date);
+            request.setAttribute("dateCoverageFrom",dataset_date_from);
+            request.setAttribute("dateCoverageTo",dataset_date_until);
             request.setAttribute("datasetType",dataset_type);
             request.setAttribute("datasetURI",dataset_uri);
             

@@ -115,10 +115,18 @@
                     </div>
                     <div class="row">                                    
                         <div class="col-md-4">
-                            <label for="dateCoverage" class="control-label">Date</label>
+                            <label for="dateCoverage" class="control-label">From Date</label>
                         </div>
-                        <div class="col-md-8">
-                            <input type="date" class="form-control" id="dateCoverage" name="dateCoverage" value="">
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="dateCoverageFrom" name="dateCoverageFrom" min="1900" max="2030" step="1" value="">
+                        </div> 
+                    </div>
+                    <div class="row">                                    
+                        <div class="col-md-4">
+                            <label for="dateCoverage" class="control-label">Until Date</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="number" class="form-control" id="dateCoverageTo" name="dateCoverageTo" min="1900" max="2030" step="1" value="">
                         </div> 
                     </div>
                     <div class="row">
