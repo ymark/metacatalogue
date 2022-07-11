@@ -50,7 +50,7 @@ public class DownloadServlet extends MyHttpServlet {
             // Establish a connection to Virtuoso repository
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                                                            
             // Search and retrieve the results
-            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_uri,"","","","","","","",-1,-1,directoryGraph);
+            List<DirectoryStruct> results = new DirectoryService(directoryManager).searchDataset(dataset_uri,"","","","","","","","",-1,-1,directoryGraph);
             // There should be one and only result   
             if(results.size() != 1){
                 log2db(request,"illegal","The dataset URI resulted in "+results.size()+" directory descriptions.");
