@@ -24,9 +24,9 @@
                 <a href="${baseUrl}/searching/sparql_search_pane.jsp">
                     <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
                 </a> 
-                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+<!--                <a href="${baseUrl}/searching/browse_search_pane.jsp">
                     <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
-                </a> 
+                </a> -->
                 <a href="${baseUrl}/searching/advanced_search_pane.jsp">
                     <img src="${baseUrl}/images/refine.png" class="my-speed-button" title="Advanced Search">
                 </a>    

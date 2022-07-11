@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="${baseUrl}/css/toastr.css" /> 
         <link rel="stylesheet" href="${baseUrl}/css/footable.core.css" />
         <link rel="stylesheet" href="${baseUrl}/css/custom.css" />
+        <link rel="stylesheet" href="${baseUrl}/css/hover.css"/>
         
     </head>
     <body>
@@ -99,13 +100,33 @@
                             </td>
                             <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
                             
-                            <td>${item.getContactPoint()}</td>
-                            <td>${item.getAccessMethod()}</td>
-                            <td>${item.getDescription()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="People that should be contacted to get more information about the dataset, that curate the dataset or to whom putative problems with the dataset should be addressed">
+                                    ${item.getContactPoint()}
+                                </span>
+                            </td>    
+                            <td>
+                                <span class="hovertext" data-hover="The repository through which you can access the dataset">
+                                    ${item.getAccessMethod()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A brief overview of the dataset">
+                                    ${item.getDescription()}
+                                </span>
+                            </td>
                             <td>${item.getKeeperName()}</td>
                             <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
-                            <td>${item.getPublicationDate()}</td>
-                            <td>${item.getCreatorName()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="The last published version of the dataset">
+                                    ${item.getPublicationDate()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The list of creators represents the people and organisations who created the resource, in priority order">
+                                    ${item.getCreatorName()}
+                                </span>
+                            </td>
                             
                             <c:choose>
                                 <c:when test="${item.getContributors().isEmpty()}">
@@ -116,17 +137,51 @@
                                 </c:otherwise>
                             </c:choose>   
                                     
-                            <td>${item.getAccessRights()}</td>
-                            <td>${item.getRightsHolderName()}</td>
-               
-                            <td>${item.getGeographicCoverage()}</td>
-                            <td>${item.getTaxonomicCoverage()}</td>
-                            <td>${item.getTemporalCoverage()}</td>
-                            <td>${item.getEmbargoPeriod()}</td>   
-                            <td>${item.getKeywordsUserFriendly()}</td>   
-                            <td>${item.getCitation()}</td>   
-                            <td><a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a></td>  
-                            
+                            <td>
+                                <span class="hovertext" data-hover="The licence that is applied to a dataset provides a standardized way to define the appropriate use of the work">
+                                    ${item.getAccessRights()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The owner of the dataset">
+                                    ${item.getRightsHolderName()}
+                                </span>    
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The geographic area covered by the dataset">
+                                    ${item.getGeographicCoverage()}
+                                </span> 
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Taxonomic areas covered by the dataset">
+                                    ${item.getTaxonomicCoverage()}
+                                </span> 
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Metadata about the time periods covered by the dataset">
+                                    ${item.getTemporalCoverage()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Specifies if and for how long the owner has set an empargo period for the data">
+                                    ${item.getEmbargoPeriod()}
+                                </span>
+                            </td>   
+                            <td>
+                                <span class="hovertext" data-hover="Keywords that concisely describe the resource or are related to the resource">
+                                    ${item.getKeywordsUserFriendly()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The citation of the work">
+                                    ${item.getCitation()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The link through which the dataset is available">
+                                    <a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a>
+                                </span>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>
