@@ -49,7 +49,7 @@ public class AdvancedSearch extends MyHttpServlet {
                     genus = null, family = null, order = null, phylum = null, class_ = null, kingdom = null,
                     cname = null, place = null, language = null, jspView = null, sname = null, synonym = null,
                     date = null, actor = null, individual = null,dimension = null,specimen = null, collection = null,
-                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null, filter=null;
+                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null, filter=null, measurement_type=null ;
             
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                        
             
@@ -239,11 +239,13 @@ public class AdvancedSearch extends MyHttpServlet {
                     jspView = "morphometric.jsp";
                     break;
                 case "environmental":  
-                    dimension = getTextFormField(request,"dimension");
                     place = getTextFormField(request,"place");
+                    date = getTextFormField(request,"date");
+                    measurement_type = getTextFormField(request,"measurement_type");
                     datasetURI = "";
-                    request.setAttribute("dimension",dimension);
                     request.setAttribute("place",place);
+                    request.setAttribute("date",date);
+                    request.setAttribute("measurement_type",measurement_type);
                     jspView = "environmental.jsp";
                     break;
                 case "statistical":  
@@ -325,7 +327,8 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchMorphometrics(species, dimension,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "environmental":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmental(dimension, place,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmental(dimension, place,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmentalDatasets(place,date,measurement_type,offset,limit, this.metadataGraph, this.directoryGraph);
                     break;
                 case "statistical":  
                     dservice = new MetadataRepositoryService(directoryManager).searchStats(species, dimension,datasetURI,offset,limit, this.metadataGraph);

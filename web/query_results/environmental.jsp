@@ -25,54 +25,160 @@
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         
         <!-- Metacatalogue Top Bar : START -->
-        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">
-            <div style="float: left">
-                <img src="${baseUrl}/images/data_services.png" style="width: 50px">
-            </div>
+        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Dataset Catalogue Service
+                Advanced Search - <font size="4"><i>search through data</i></font>
             </div>
-            <c:if test = "${canManage.equals('yes')}">
-    
-                <img src="${baseUrl}/images/search.png" class="my-speed-button-selected">
-                <a href="${baseUrl}/publish">
-                    <img src="${baseUrl}/images/edit.png" class="my-speed-button">
+                <a href="${baseUrl}/searching/full_search_pane.jsp">
+                    <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
+                </a> 
+                <a href="${baseUrl}/searching/sparql_search_pane.jsp">
+                    <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
+                </a> 
+<!--                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+                    <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
+                </a> -->
+                <a href="${baseUrl}/searching/advanced_search_pane.jsp">
+                    <img src="${baseUrl}/images/refine.png" class="my-speed-button-selected" title="Advanced Search">
+                </a>    
+                <a href="${baseUrl}/">
+                    <img src="${baseUrl}/images/search.png" class="my-speed-button" title="Basic Search">
                 </a>
-            </c:if>            
             <div style="clear: both"></div>
-        </div>     
+        </div>  
         <!-- Metacatalogue Top Bar : END -->
+        
         <div class="results_wrapper">
             <h3>Environmental Information Found</h3>
             <table class="footable table table-bordered" >
                 <thead>
                     <th>Row</th>
-                    <th>Place</th>
-                    <th>Dimension</th>                    
-                    <th>Related Dataset</th>
+                    <th style="text-align: left">Dataset Title</th>                    
+                    <th>Owner</th>
+                    <th>Curator</th>                               
+                    <th style="text-align: left">Dataset Type</th>
+                    <th>View Dataset</th>
                     <th data-toggle="true"></th>
-                    <th data-hide="all">Dataset Title</th>               
-                    <th data-hide="all">Dimension Unit</th>
-                    <th data-hide="all">Dimension Value</th>             
-                    <th data-hide="all">Actor</th>   
-                    <th data-hide="all">Date</th>                       
+                    <th data-hide="all">Contact Point</th>
+                    <th data-hide="all">Access Method</th>
+                    <th data-hide="all">Description</th>
+                    <th data-hide="all">Owner</th>
+                    <th data-hide="all">Publication Date</th>
+                    <th data-hide="all">Creator</th>
+                    <th data-hide="all">Metadata Provider</th>
+                    <th data-hide="all">Access Rights</th>
+                    <th data-hide="all">Rights Holder</th>
+                    <th data-hide="all">Geographic Coverage</th>
+                    <th data-hide="all">Taxonomic Coverage</th>
+                    <th data-hide="all">Temporal Coverage</th>
+                    <th data-hide="all">Embargo Period</th>
+                    <th data-hide="all">Keywords</th>
+                    <th data-hide="all">How to Cite</th>
+                    <th data-hide="all" style="text-align: left">Dataset URL</th> 
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
-                        <% Pair actors = ((EnvironmentalStruct)pageContext.getAttribute("item")).getActors().get(0); %>
-                        <tr> 
-                            <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getPlaceURI()}">${item.getPlaceName()}</a></td> 
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getDimensionURI()}">${item.getDimensionName()}</a></td>                            
-                             <td><a href="${baseUrl}/search/directory?datasetName=&owner=&datasetURI=${item.getDatasetURI()}">View dataset</a></td>
-                            <td><span class="footable-toggle"></span> More info</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>                                            
-                            <td>${item.getDimensionUnit()}</td>
-                            <td>${item.getDimensionValue()}</td>
-                            <td><a href="${baseUrl}/search/browse?uri=<% out.print(actors.getValue().toString()); %>"><% out.print(actors.getKey().toString()); %></a></td>
-                            <td>${item.getTimeSpan()}</td>
-                                                  
-                        <tr/>
+                        <tr>
+                           <td><strong>${(page-1)*rpp + status.count}</strong></td>
+                            <td style='text-align: left'>${item.getDatasetName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
+                            <td>${item.getOwnerName()}</td>
+                            <td>${item.getCuratorName()}</td>
+                            <td style='text-align: left'>${item.getDatasetType()}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${!item.getDatasetID().isEmpty()}">
+                                        <a href="${item.getDatasetID()}" target="_blank">View</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        --
+                                    </c:otherwise>
+                                </c:choose>   
+                            </td>
+                            <td style='white-space: nowrap'><span class="footable-toggle"></span> More info</td>
+                            
+                            <td>
+                                <span class="hovertext" data-hover="People that should be contacted to get more information about the dataset, that curate the dataset or to whom putative problems with the dataset should be addressed">
+                                    ${item.getContactPoint()}
+                                </span>
+                            </td>    
+                            <td>
+                                <span class="hovertext" data-hover="The repository through which you can access the dataset">
+                                    ${item.getAccessMethod()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="A brief overview of the dataset">
+                                    ${item.getDescription()}
+                                </span>
+                            </td>
+                            <td>${item.getKeeperName()}</td>
+                            <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
+                            <td>
+                                <span class="hovertext" data-hover="The last published version of the dataset">
+                                    ${item.getPublicationDate()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The list of creators represents the people and organisations who created the resource, in priority order">
+                                    ${item.getCreatorName()}
+                                </span>
+                            </td>
+                            
+                            <c:choose>
+                                <c:when test="${item.getContributors().isEmpty()}">
+                                    <td>-</td>
+                                </c:when>    
+                                <c:otherwise>
+                                    <td>${item.getContributors().get(0).getValue()}</td>
+                                </c:otherwise>
+                            </c:choose>   
+                                    
+                            <td>
+                                <span class="hovertext" data-hover="The licence that is applied to a dataset provides a standardized way to define the appropriate use of the work">
+                                    ${item.getAccessRights()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The owner of the dataset">
+                                    ${item.getRightsHolderName()}
+                                </span>    
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The geographic area covered by the dataset">
+                                    ${item.getGeographicCoverage()}
+                                </span> 
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Taxonomic areas covered by the dataset">
+                                    ${item.getTaxonomicCoverage()}
+                                </span> 
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Metadata about the time periods covered by the dataset">
+                                    ${item.getTemporalCoverage()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Specifies if and for how long the owner has set an empargo period for the data">
+                                    ${item.getEmbargoPeriod()}
+                                </span>
+                            </td>   
+                            <td>
+                                <span class="hovertext" data-hover="Keywords that concisely describe the resource or are related to the resource">
+                                    ${item.getKeywordsUserFriendly()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The citation of the work">
+                                    ${item.getCitation()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The link through which the dataset is available">
+                                    <a href="${item.getDatasetID()}" target="_blank">${item.getDatasetID()}</a>
+                                </span>
+                            </td>
+                        </tr>
                     </c:forEach>
                 </tbody>
             </table>
@@ -81,7 +187,7 @@
                 <nav>
                     <ul class="pagination">
                         <li <c:if test = "${!leftArrow}">class='disabled'</c:if> >
-                            <a href="${baseUrl}/search/advanced/environmental?dimension=${dimension}&place=${place}&page=${page-1}" aria-label="Previous">
+                            <a href="${baseUrl}/search/advanced/environmental?place=${place}&date=${date}&measurement_type=${measurement_type}&page=${page-1}" aria-label="Previous">
                               <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -92,14 +198,14 @@
                                 </c:when>    
                                 <c:otherwise>     
                                     <c:if test = "${loop.index <= lastPage}">
-                                        <li><a href="${baseUrl}/search/advanced/environmental?dimension=${dimension}&place=${place}&page=${loop.index}">${loop.index}</a></li>
+                                        <li><a href="${baseUrl}/search/advanced/environmental?place=${place}&date=${date}&measurement_type=${measurement_type}&page=${loop.index}">${loop.index}</a></li>
                                     </c:if>                                                                      
                                 </c:otherwise>
                             </c:choose>                        
                         </c:forEach>
                         <c:if test = "${rightArrow}">
                             <li>
-                                <a href="${baseUrl}/search/advanced/environmental?dimension=${dimension}&place=${place}&page=${page+1}" aria-label="Next">
+                                <a href="${baseUrl}/search/advanced/environmental?place=${place}&date=${date}&measurement_type=${measurement_type}&page=${page+1}" aria-label="Next">
                                   <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

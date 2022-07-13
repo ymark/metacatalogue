@@ -573,17 +573,23 @@
                                 
                                 <form id="environmental_form" class="form-horizontal" action="../search/advanced/environmental" method="get" style="display: none">
                                     <div class="form-group">
-                                        <label for="dimension" class="col-sm-3 control-label">Dimension</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="dimension" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="place" class="col-sm-3 control-label">Place</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="place" class="form-control">
                                         </div>
                                     </div>                            
+                                    <div class="form-group">
+                                        <label for="date" class="col-sm-3 control-label">Date</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="date" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="measurement_type" class="col-sm-3 control-label">Measurement Type</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="measurement_type" class="form-control">
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-3 col-sm-9">
                                             <button type="submit" class="btn btn-default">Search</button>
