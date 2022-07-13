@@ -264,7 +264,8 @@ public class AdvancedSearch extends MyHttpServlet {
                 page = Integer.parseInt(pageString);                                // Pagination-related
             }                                                                       // Pagination-related           
             int offset = (page-1)*this.rpp;                                         // Pagination-related
-            int limit = this.rpp*(this.ppm+1);                                          // Pagination-related
+//            int limit = this.rpp*(this.ppm+1);                                          // Pagination-related
+            int limit = this.rpp;                                         // Pagination-related
             boolean leftArrow = true;                                               // Pagination-related
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
