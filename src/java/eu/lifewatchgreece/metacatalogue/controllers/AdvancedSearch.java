@@ -273,7 +273,8 @@ public class AdvancedSearch extends MyHttpServlet {
             
             switch(searchType){
                 case "occurence":    
-                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrence(sciName, location, year,datasetURI,offset,limit,this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrence(sciName, location, year,datasetURI,offset,limit,this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrenceDatasets(sciName, location, year,datasetURI,offset,limit,this.metadataGraph, this.directoryGraph);
                     break;
                 case "temp_stats":    
                     dservice = new MetadataRepositoryService(directoryManager).searchOccurenceStatsTemp(sciName, location,year, number,datasetURI,offset,limit, this.metadataGraph);
