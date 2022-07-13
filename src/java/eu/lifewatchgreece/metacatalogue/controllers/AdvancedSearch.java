@@ -118,12 +118,12 @@ public class AdvancedSearch extends MyHttpServlet {
                     break;
                 case "scientific_name":  
                     species = getTextFormField(request,"species");
-                    sname = getTextFormField(request,"scientificName");
+                    sname = getTextFormField(request,"scientificNameId");
                     date = getTextFormField(request,"date");
                     actor = getTextFormField(request,"actor");
                     datasetURI = "";
                     request.setAttribute("species",species);
-                    request.setAttribute("sname",sname);
+                    request.setAttribute("snameid",sname);
                     request.setAttribute("date",date);
                     request.setAttribute("actor",actor);
                     jspView = "scientific.jsp";
@@ -291,7 +291,8 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchSynonym(species, sname, synonym,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "scientific_name":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNaming(species, date, actor, sname,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNaming(species, date, actor, sname,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNamingCollated(sname, species, date, actor, offset,limit, this.metadataGraph);
                     break;
                 case "identification":  
                     dservice = new MetadataRepositoryService(directoryManager).searchIdentification(species, date, actor, place, individual,datasetURI,offset,limit, this.metadataGraph);

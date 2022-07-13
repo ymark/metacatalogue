@@ -243,13 +243,13 @@
                                 
                                 <form id="scientific_name_form" class="form-horizontal" action="../search/advanced/scientific_name" method="get" style="display: none">
                                     <div class="form-group">
-                                        <label for="scientificName" class="col-sm-3 control-label">Scientific Name</label>
+                                        <label for="scientificName" class="col-sm-3 control-label">Scientific Name ID</label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="scientificName" class="form-control">
+                                            <input type="text" name="scientificNameId" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="species" class="col-sm-3 control-label">Species</label>
+                                        <label for="species" class="col-sm-3 control-label">Species Name</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="species" class="form-control">
                                         </div>
