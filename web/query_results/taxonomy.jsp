@@ -69,7 +69,7 @@
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}">${item.getSpeciesName()}</a></td>
+                            <td style="text-align: left">${item.getSpeciesName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
                             <td style="text-align: left">${item.getGenusName()}</td>
                             <td style="text-align: left">${item.getFamilyName()}</td>
                             <td style="text-align: left">${item.getDatasetsInvolved().size()}</td>                            
@@ -82,7 +82,12 @@
                             <td>${item.getClassName()}</td>
                             <td>${item.getPhylumName()}</td>
                             <td>${item.getKingdomName()}</td>
-                            <td>${item.getDatasetsInvolved().values()}</td>
+                            <!--<td>${item.getDatasetsInvolved().values()}</td>-->
+                            <td>
+                                <c:forEach items="${item.getDatasetsInvolved().values()}" var="dataset_item" varStatus="status">
+                                    ${dataset_item}<br>
+                                </c:forEach>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>
