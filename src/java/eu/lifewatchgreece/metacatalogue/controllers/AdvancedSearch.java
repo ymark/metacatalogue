@@ -281,7 +281,8 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchOccurenceStatsTemp(sciName, location,year, number,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "taxonomy":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomy(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomy(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomyCollated(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "common_name":  
                     dservice = new MetadataRepositoryService(directoryManager).searchCommonName(species, cname, place, language, datasetURI, this.metadataGraph);
