@@ -49,7 +49,7 @@ public class AdvancedSearch extends MyHttpServlet {
                     genus = null, family = null, order = null, phylum = null, class_ = null, kingdom = null,
                     cname = null, place = null, language = null, jspView = null, sname = null, synonym = null,
                     date = null, actor = null, individual = null,dimension = null,specimen = null, collection = null,
-                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null, filter=null;
+                    provider = null,device = null, contrast = null,input = null, sample = null,owner = null, scanid=null, filter=null, measurement_type=null ;
             
             VirtuosoRepositoryManager directoryManager = new VirtuosoRepositoryManager(virtuosoUrl,virtuosoPort,virtuosoUser,virtuosoPass);                        
             
@@ -118,12 +118,12 @@ public class AdvancedSearch extends MyHttpServlet {
                     break;
                 case "scientific_name":  
                     species = getTextFormField(request,"species");
-                    sname = getTextFormField(request,"scientificName");
+                    sname = getTextFormField(request,"scientificNameId");
                     date = getTextFormField(request,"date");
                     actor = getTextFormField(request,"actor");
                     datasetURI = "";
                     request.setAttribute("species",species);
-                    request.setAttribute("sname",sname);
+                    request.setAttribute("snameid",sname);
                     request.setAttribute("date",date);
                     request.setAttribute("actor",actor);
                     jspView = "scientific.jsp";
@@ -239,11 +239,13 @@ public class AdvancedSearch extends MyHttpServlet {
                     jspView = "morphometric.jsp";
                     break;
                 case "environmental":  
-                    dimension = getTextFormField(request,"dimension");
                     place = getTextFormField(request,"place");
+                    date = getTextFormField(request,"date");
+                    measurement_type = getTextFormField(request,"measurement_type");
                     datasetURI = "";
-                    request.setAttribute("dimension",dimension);
                     request.setAttribute("place",place);
+                    request.setAttribute("date",date);
+                    request.setAttribute("measurement_type",measurement_type);
                     jspView = "environmental.jsp";
                     break;
                 case "statistical":  
@@ -264,7 +266,8 @@ public class AdvancedSearch extends MyHttpServlet {
                 page = Integer.parseInt(pageString);                                // Pagination-related
             }                                                                       // Pagination-related           
             int offset = (page-1)*this.rpp;                                         // Pagination-related
-            int limit = this.rpp*(this.ppm+1);                                          // Pagination-related
+//            int limit = this.rpp*(this.ppm+1);                                          // Pagination-related
+            int limit = this.rpp;                                         // Pagination-related
             boolean leftArrow = true;                                               // Pagination-related
             boolean rightArrow = false;                                             // Pagination-related
             int lastPage;
@@ -273,13 +276,15 @@ public class AdvancedSearch extends MyHttpServlet {
             
             switch(searchType){
                 case "occurence":    
-                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrence(sciName, location, year,datasetURI,offset,limit,this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrence(sciName, location, year,datasetURI,offset,limit,this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchOccurrenceDatasets(sciName, location, year,datasetURI,offset,limit,this.metadataGraph, this.directoryGraph);
                     break;
                 case "temp_stats":    
                     dservice = new MetadataRepositoryService(directoryManager).searchOccurenceStatsTemp(sciName, location,year, number,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "taxonomy":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomy(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomy(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchTaxonomyCollated(species, genus, family, order, class_, phylum, kingdom,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "common_name":  
                     dservice = new MetadataRepositoryService(directoryManager).searchCommonName(species, cname, place, language, datasetURI, this.metadataGraph);
@@ -288,7 +293,8 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchSynonym(species, sname, synonym,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "scientific_name":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNaming(species, date, actor, sname,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNaming(species, date, actor, sname,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchScientificNamingCollated(sname, species, date, actor, offset,limit, this.metadataGraph);
                     break;
                 case "identification":  
                     dservice = new MetadataRepositoryService(directoryManager).searchIdentification(species, date, actor, place, individual,datasetURI,offset,limit, this.metadataGraph);
@@ -321,7 +327,8 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchMorphometrics(species, dimension,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "environmental":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmental(dimension, place,datasetURI,offset,limit, this.metadataGraph);
+//                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmental(dimension, place,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchEnvironmentalDatasets(place,date,measurement_type,offset,limit, this.metadataGraph, this.directoryGraph);
                     break;
                 case "statistical":  
                     dservice = new MetadataRepositoryService(directoryManager).searchStats(species, dimension,datasetURI,offset,limit, this.metadataGraph);

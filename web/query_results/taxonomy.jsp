@@ -22,22 +22,27 @@
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         
         <!-- Metacatalogue Top Bar : START -->
-        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">
-            <div style="float: left">
-                <img src="${baseUrl}/images/data_services.png" style="width: 50px">
-            </div>
+        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Dataset Catalogue Service
+                Advanced Search - <font size="4"><i>search through data</i></font>
             </div>
-            <c:if test = "${canManage.equals('yes')}">
-    
-                <img src="${baseUrl}/images/search.png" class="my-speed-button-selected">
-                <a href="${baseUrl}/publish">
-                    <img src="${baseUrl}/images/edit.png" class="my-speed-button">
+                <a href="${baseUrl}/searching/full_search_pane.jsp">
+                    <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
+                </a> 
+                <a href="${baseUrl}/searching/sparql_search_pane.jsp">
+                    <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
+                </a> 
+<!--                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+                    <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
+                </a> -->
+                <a href="${baseUrl}/searching/advanced_search_pane.jsp">
+                    <img src="${baseUrl}/images/refine.png" class="my-speed-button-selected" title="Advanced Search">
+                </a>    
+                <a href="${baseUrl}/">
+                    <img src="${baseUrl}/images/search.png" class="my-speed-button" title="Basic Search">
                 </a>
-            </c:if>            
             <div style="clear: both"></div>
-        </div>     
+        </div>  
         <!-- Metacatalogue Top Bar : END -->
         
         <div class="results_wrapper">
@@ -47,28 +52,41 @@
                     <th>Row</th>
                     <th>Species Name</th>  
                     <th>Genus Name</th>
-                    <th>Kingdom Name</th>                    
-                    <th>Related Dataset</th>
+                    <th>Family Name</th>                    
+                    <th>No of Related Datasets</th>
                     <th data-toggle="true"></th>         
-                    <th data-hide="all">Dataset Title</th>   
-                    <th data-hide="all">Family Name</th>                                               
-                    <th data-hide="all">Order Name</th>         
-                    <th data-hide="all">Phylum Name</th>                             
+                    <th data-hide="all">Scientific Name ID</th>   
+                    <th data-hide="all">Species Name</th>   
+                    <th data-hide="all">Genus Name</th>                                               
+                    <th data-hide="all">Family Name</th>         
+                    <th data-hide="all">Order Name</th>
+                    <th data-hide="all">Class Name</th>
+                    <th data-hide="all">Phylum Name</th>
+                    <th data-hide="all">Kingdom Name</th>
+                    <th data-hide="all">Related Datasets</th>
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}">${item.getSpeciesName()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getGenusURI()}">${item.getGenusName()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getKingdomURI()}">${item.getKingdomName()}</a></td>                            
-                            <td><a href="${baseUrl}/search/directory?datasetName=&owner=&datasetURI=${item.getDatasetURI()}">View dataset</a></td>
+                            <td style="text-align: left">${item.getSpeciesName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
+                            <td style="text-align: left">${item.getGenusName()}</td>
+                            <td style="text-align: left">${item.getFamilyName()}</td>
+                            <td style="text-align: left">${item.getDatasetsInvolved().size()}</td>                            
                             <td><span class="footable-toggle"></span> More info</td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getFamilyURI()}">${item.getFamilyName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getClassURI()}">${item.getClassName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getPhylumURI()}">${item.getPhylumName()}</a></td>
-                                
+                            <td>${item.getScNameId()}</td>
+                            <td>${item.getSpeciesName()}</td>
+                            <td>${item.getGenusName()}</td>
+                            <td>${item.getFamilyName()}</td>
+                            <td>${item.getOrderName()}</td>
+                            <td>${item.getClassName()}</td>
+                            <td>${item.getPhylumName()}</td>
+                            <td>${item.getKingdomName()}</td>
+                            <td>
+                                <c:forEach items="${item.getDatasetsInvolved().keySet()}" var="dataset_item" varStatus="status">
+                                    <a href="${baseUrl}/search/directory?datasetURI=${dataset_item}">${item.getDatasetName(dataset_item)}</a><br>
+                                </c:forEach>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>

@@ -24,22 +24,27 @@
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         
         <!-- Metacatalogue Top Bar : START -->
-        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">
-            <div style="float: left">
-                <img src="${baseUrl}/images/data_services.png" style="width: 50px">
-            </div>
+        <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Dataset Catalogue Service
+                Advanced Search - <font size="4"><i>search through data</i></font>
             </div>
-            <c:if test = "${canManage.equals('yes')}">
-    
-                <img src="${baseUrl}/images/search.png" class="my-speed-button-selected">
-                <a href="${baseUrl}/publish">
-                    <img src="${baseUrl}/images/edit.png" class="my-speed-button">
+                <a href="${baseUrl}/searching/full_search_pane.jsp">
+                    <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
+                </a> 
+                <a href="${baseUrl}/searching/sparql_search_pane.jsp">
+                    <img src="${baseUrl}/images/sparql.png" class="my-speed-button" title="SPARQL Endpoint">
+                </a> 
+<!--                <a href="${baseUrl}/searching/browse_search_pane.jsp">
+                    <img src="${baseUrl}/images/browse.png" class="my-speed-button" title="Browse Contents">
+                </a> -->
+                <a href="${baseUrl}/searching/advanced_search_pane.jsp">
+                    <img src="${baseUrl}/images/refine.png" class="my-speed-button-selected" title="Advanced Search">
+                </a>    
+                <a href="${baseUrl}/">
+                    <img src="${baseUrl}/images/search.png" class="my-speed-button" title="Basic Search">
                 </a>
-            </c:if>            
             <div style="clear: both"></div>
-        </div>     
+        </div>  
         <!-- Metacatalogue Top Bar : END -->
         
         <div class="results_wrapper">
@@ -50,27 +55,35 @@
                     <th>Scientific Name</th>
                     <th>Authorship</th>
                     <th>Date</th>                                        
-                    <th>Related Dataset</th>
+                    <th>No of Related Dataset</th>
                     <th data-toggle="true"></th>
-                    <th data-hide="all">Dataset Title</th>
-                    <th data-hide="all">Scientific Name Assignment ID</th>                                                      
-                    <th data-hide="all">Species</th>                            
+                    <th data-hide="all">Scientific Name ID </th>
+                    <th data-hide="all">Species Name</th>                                                      
+                    <th data-hide="all">Authorship</th>
+                    <th data-hide="all">Date</th>
                     <th data-hide="all">Nomenclatural Code</th>
+                    <th data-hide="all">Related Datasets</th>
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
                         <% Pair actors = ((ScientificNamingStruct)pageContext.getAttribute("item")).getActors().get(0); %>
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=${item.getAppellationURI()}">${item.getAppellation()}</a></td>
-                            <td style="text-align: left"><a href="${baseUrl}/search/browse?uri=<% out.print(actors.getKey().toString()); %>"><% out.print(actors.getValue().toString()); %></a></td>
-                            <td style="text-align: left">${item.getTimeSpan()}</td>                            
-                            <td><a href="${baseUrl}/search/directory?datasetName=&owner=&datasetURI=${item.getDatasetURI()}">View dataset</a></td>
+                            <td style="text-align: left">${item.getSpeciesName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}"><img src="../../images/list_view.png" title="Show with triple-browser"></img></a></td>
+                            <td style="text-align: left"><% out.print(actors.getValue().toString()); %></td>
+                            <td style="text-align: left">${item.getTimeSpan()}</td>        
+                            <td style="text-align: left">${item.getDatasetsInvolved().size()}</td> 
                             <td><span class="footable-toggle"></span> More info</td>                         
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}">${item.getDatasetName()}</a></td>
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getScientificNameAssignmentEventURI()}">${item.getScientificNameAssignmentEvent()}</a></td>    
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getSpeciesURI()}">${item.getSpeciesURI()}</a></td>                                                 
-                            <td><a href="${baseUrl}/search/browse?uri=${item.getNomenclaturalCodeURI()}">${item.getNomenclaturalCodeName()}</a></td>
+                            <td>${item.getScNameId()}</td>
+                            <td>${item.getSpeciesName()}</td>
+                            <td><% out.print(actors.getValue().toString()); %></td>
+                            <td>${item.getTimeSpan()}</td>                                            
+                            <td>${item.getNomenclaturalCodeName()}</td>
+                            <td>
+                                <c:forEach items="${item.getDatasetsInvolved().keySet()}" var="dataset_item" varStatus="status">
+                                    <a href="${baseUrl}/search/directory?datasetURI=${dataset_item}">${item.getDatasetName(dataset_item)}</a><br>
+                                </c:forEach>
+                            </td>
                         <tr/>
                     </c:forEach>
                 </tbody>
