@@ -84,8 +84,8 @@
                             <td>${item.getKingdomName()}</td>
                             <!--<td>${item.getDatasetsInvolved().values()}</td>-->
                             <td>
-                                <c:forEach items="${item.getDatasetsInvolved().values()}" var="dataset_item" varStatus="status">
-                                    ${dataset_item}<br>
+                                <c:forEach items="${item.getDatasetsInvolved().keySet()}" var="dataset_item" varStatus="status">
+                                    <a href="${baseUrl}/search/directory?datasetURI=${dataset_item}">${item.getDatasetName(dataset_item)}</a><br>
                                 </c:forEach>
                             </td>
                         <tr/>
