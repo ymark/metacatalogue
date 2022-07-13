@@ -50,7 +50,7 @@
         <!-- Metacatalogue Top Bar : START -->
         <div style="border: 1px solid gray; border-radius: 4px; padding:6px 0px 6px 10px; margin: 0 20px 20px 20px; background-color: #E6F3F7">            
             <div style="float:left; font-size: 30px; margin-left: 30px; margin-top: 4px">
-                Advanced Search - Occurrence Results
+                Advanced Search - <font size="4"><i>search through data</i></font>
             </div>
                 <a href="${baseUrl}/searching/full_search_pane.jsp">
                     <img src="${baseUrl}/images/comment.png" class="my-speed-button" title="Produce Text">
@@ -74,10 +74,10 @@
         <div class="results_wrapper" id="results_wrapper_div">
             
             <div>
-                <h3 style="float: left">Occurrences Information Found</h3>
-                <div style="float: right; margin-top: 15px">
+                <h3 style="float: left">Datasets with occurrence information</h3>
+<!--                <div style="float: right; margin-top: 15px">
                     <input id="annoToggleButton" data-toggle="toggle" data-on="Annotation On" data-off="Annotation Off" type="checkbox">
-                </div>
+                </div>-->
             </div>
             
             <table class="footable table table-bordered" >
