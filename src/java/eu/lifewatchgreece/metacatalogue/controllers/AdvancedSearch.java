@@ -306,7 +306,7 @@ public class AdvancedSearch extends MyHttpServlet {
                     dservice = new MetadataRepositoryService(directoryManager).searchSpecimen(species, specimen, collection,datasetURI,offset,limit, this.metadataGraph);
                     break;
                 case "microct_specimen":  
-                    dservice = new MetadataRepositoryService(directoryManager).searchMicroCTSpecimen(specimen, collection,species, provider,datasetURI,offset,limit, this.metadataGraph);
+                    dservice = new MetadataRepositoryService(directoryManager).searchMicroCTSpecimen(specimen, species, collection, provider,offset,limit, this.metadataGraph);
                     break;
                 case "microct_scanning":  
                     dservice = new MetadataRepositoryService(directoryManager).searchMicroCTScanning(species,filter,contrast,offset,limit,this.metadataGraph);

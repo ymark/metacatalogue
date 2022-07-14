@@ -56,13 +56,19 @@
                     <th>Specimen ID</th> 
                     <th>Specimen</th> 
                     <th data-toggle="true"></th>
-                    <!--<th data-hide="all">Dataset Title</th>-->
-                    <th data-hide="all">Collection</th>
-                    <th data-hide="all">Institution</th>   
-                    <th data-hide="all">Description</th>            
-                    <th data-hide="all">Dimension</th>     
-                    <th data-hide="all">Dimension Unit</th> 
-                    <th data-hide="all">Dimension Value</th> 
+                    <th data-hide="all">Specimen ID</th>
+                    <th data-hide="all">Specimen Label</th>   
+                    <th data-hide="all">Collection Code</th>            
+                    <th data-hide="all">Specimen Provider</th>     
+                    <th data-hide="all">Provider Institute</th> 
+                    <th data-hide="all">Specimen Description</th> 
+                    <th data-hide="all">Material</th> 
+                    <th data-hide="all">Scientific Name</th> 
+                    <th data-hide="all">Size (mm)</th> 
+                    <th data-hide="all">Fixation Type</th> 
+                    <th data-hide="all">Fixation Notes</th> 
+                    <th data-hide="all">Preservation Medium</th> 
+                    <th data-hide="all">Storage Place</th> 
                 </thead>
                 <tbody>
                     <c:forEach items="${results}" var="item" varStatus="status">
@@ -90,10 +96,24 @@
                                 </span>
                             </td>
                             <td><span class="footable-toggle"></span> More info</td>
-                            <!--<td>${item.getDatasetName()}</td>-->
+                            <td>
+                                <span class="hovertext" data-hover="A unique identifier for the specimen in the format: mCT0000x (where x = incrementing number, always with preceding zeros)">
+                                    ${item.getSpecimenID()}
+                                </span>
+                            </td>    
+                            <td>
+                                <span class="hovertext" data-hover="Original label on specimen vial. If the label does not exist the corresponding unique code is shown">
+                                    ${item.getSpecimenName()}
+                                </span>
+                            </td>
                             <td>
                                 <span class="hovertext" data-hover="Original collection code of the specimen">
                                     ${item.getCollectionName()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="The person who provided the specimen">
+                                    ${item.getProviderName()}
                                 </span>
                             </td>
                             <td>
@@ -107,18 +127,38 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="hovertext" data-hover="The type of measured dimension of the specimen">
-                                    ${item.getDimensionName()}
+                                <span class="hovertext" data-hover="The actual material of the specimen">
+                                    ${item.getMaterial()}
                                 </span>
                             </td>
                             <td>
-                                <span class="hovertext" data-hover="The unit of the measured dimension of the specimen">
-                                    ${item.getDimensionUnit()}
+                                <span class="hovertext" data-hover="The lowest taxonomic name to which the specimen has been identified">
+                                    ${item.getSpeciesName()}
                                 </span>
                             </td>
                             <td>
-                                <span class="hovertext" data-hover="The value of the measured dimension of the specimen">
+                                <span class="hovertext" data-hover="Max. length of specimen. If difficult to measure, an approximation is given">
                                     ${item.getDimensionValue()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Original fixation type of the specimen">
+                                    ${item.getFixationType()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Any comments on the fixation, e.g. detailed protocols, dates, persons, etc.">
+                                    ${item.getFixationNotes()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Current preservation medium of the specimen,. A specimen can have been fixed in one substance but then be transferred to another for storage">
+                                    ${item.getPreservationType()}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="hovertext" data-hover="Final storage place of the specimen after scan has finished">
+                                    ${item.getStoragePlace()}
                                 </span>
                             </td>
                         <tr/>

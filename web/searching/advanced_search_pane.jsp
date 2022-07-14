@@ -365,15 +365,15 @@
                                 
                                 <form id="microct_specimen_form" class="form-horizontal" action="../search/advanced/microct_specimen" method="get" style="display: none">
                                     <div class="form-group">
-                                        <label for="species" class="col-sm-3 control-label">Scientific Name</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="species" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="specimen" class="col-sm-3 control-label">Specimen ID</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="specimen" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="species" class="col-sm-3 control-label">Scientific Name</label>
+                                        <div class="col-sm-4">
+                                            <input type="text" name="species" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -33,7 +33,7 @@
         <jsp:include page="/template/head.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
         <script type="text/javascript" src="${baseUrl}/js/toastr.js"></script>
         <link rel="stylesheet" href="${baseUrl}/css/toastr.css" /> 
-        <link rel="stylesheet" href="${baseUrl}/css/custom.css" />           
+        <link rel="stylesheet" href="${baseUrl}/css/custom.css" /> 
     </head>
     <body>     
         <jsp:include page="/template/body_top.jsp"><jsp:param name="baseUrl" value="${baseUrl}" /></jsp:include>
@@ -121,7 +121,7 @@
                             <input type="number" class="form-control" id="dateCoverageFrom" name="dateCoverageFrom" min="1900" max="2030" step="1" value=""> 
                         </div>
                         <div class="col-md-4">
-                            <input type="number" class="form-control" id="dateCoverageTo" name="dateCoverageTo" min="1900" max="2030" step="1" value=""> 
+                            <input type="number" class="form-control" id="dateCoverageTo" name="dateCoverageTo" min="1900" max="2030" step="1" value="">
                         </div>
                     </div>
                     <div class="row">
