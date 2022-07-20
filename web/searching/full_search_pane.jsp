@@ -41,6 +41,15 @@
 <div role="tabpanel" class="tab-pane" id="fullSearch">
      <div class="container" style="width: 100%">
          <form method="post" class="form-horizontal" action="../search/fulltext">
+             <div class="row">
+                <div class="col-md-12" style="text-align: left">
+                    This service generates a short narrative about species. In a nutshell it describes, its taxonomy, 
+                    the datasets it appears into, and some statistics about its occurrences in different events (e.g. microCT scanning)
+                </div>
+             </div>
+             <div class="row">
+                 <br>
+             </div>
              <div class="row">                                    
                 <div class="col-md-4">
                     <label for="scientificName" class="control-label">Scientific Name</label>
@@ -54,6 +63,7 @@
                     <button type="submit" class="btn btn-default">Search</button>
                 </div>
             </div>             
+                  
          </form>
      </div>
  </div>
