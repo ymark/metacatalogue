@@ -82,7 +82,11 @@
                         <tr>
                             <td><strong>${(page-1)*rpp + status.count}</strong></td>
                             <td style='text-align: left'>${item.getDatasetName()}&nbsp;<a href="${baseUrl}/search/browse?uri=${item.getDatasetURI()}"><img src="../images/list_view.png" title="Show with triple-browser"></img></a></td>
-                            <td>${item.getOwnerName()}</td>
+                            <td>
+                                
+                                    ${item.getOwnerName()}
+                                </span>
+                            </td>
                             <td>${item.getCuratorName()}</td>
                             <td style='text-align: left'>${item.getDatasetType()}</td>
                             <td>
@@ -112,7 +116,11 @@
                                     ${item.getDescription()}
                                 </span>
                             </td>
-                            <td>${item.getKeeperName()}</td>
+                            <td>
+                                <span class="hovertext" data-hover="The person who owns the dataset">
+                                    ${item.getKeeperName()}
+                                </span>
+                            </td>
                             <!--<td><a href="${baseUrl}/search/browse?uri=${item.getPublisherURI()}">${item.getPublisherName()}</a></td>-->
                             <td>
                                 <span class="hovertext" data-hover="The last published version of the dataset">
@@ -127,10 +135,18 @@
                             
                             <c:choose>
                                 <c:when test="${item.getContributors().isEmpty()}">
-                                    <td>-</td>
+                                    <td>
+                                        <span class="hovertext" data-hover="The person responsible for providing the metadata">
+                                            -
+                                        </span>
+                                    </td>
                                 </c:when>    
                                 <c:otherwise>
-                                    <td>${item.getContributors().get(0).getValue()}</td>
+                                    <td>
+                                        <span class="hovertext" data-hover="The person responsible for providing the metadata">
+                                            ${item.getContributors().get(0).getValue()}
+                                        </span>
+                                    </td>
                                 </c:otherwise>
                             </c:choose>   
                                     
@@ -140,7 +156,7 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="hovertext" data-hover="The owner of the dataset">
+                                <span class="hovertext" data-hover="The institution that owns the dataset">
                                     ${item.getRightsHolderName()}
                                 </span>    
                             </td>
