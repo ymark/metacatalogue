@@ -139,7 +139,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.DataServices-api-5.3.0-SNAPSHOT.jar}</file>
+                    <file>${file.reference.DataServices-api-5.4.0-SNAPSHOT.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
