@@ -55,7 +55,7 @@
                     <th>Row</th>
                     <th><span class="hovertext" data-hover="Hello, this is the tooltip">Scan ID </span></th>
                     <th>Specimen ID</th>
-                    <th>Specimen Name</th>
+                    <th>Specimen Description</th>
                     <th data-toggle="true"></th>
                     <th data-hide="all">Enhancement Contrast Method</th>
                     <th data-hide="all">Filter</th>
@@ -83,7 +83,7 @@
                     <th data-hide="all">Collection code</th>
                     <th data-hide="all">Specimen provider</th>
                     <th data-hide="all">Specimen provider institute</th>
-                    <th data-hide="all">Specimen description</th>
+<!--                    <th data-hide="all">Specimen description</th>-->
                     <th data-hide="all">Material</th>
                     <th data-hide="all">Scientific name</th>
                     <th data-hide="all">Taxonomic group</th>
@@ -107,8 +107,8 @@
                                 </span>
                             </td>
                             <td>
-                                <span class="hovertext" data-hover="Original label on specimen vial. If the label does not exist the corresponding unique code is shown">
-                                    ${item.getSpecimen().getSpecimenName()}
+                                <span class="hovertext" data-hover="A verbatim description of the specimen, which allows to understand the nature of the specimen at a glance">
+                                    ${item.getSpecimen().getDescription()}
                                 </span>
                             </td>
                             <td><span class="footable-toggle"></span> More info</td>
@@ -238,11 +238,11 @@
                                     ${item.getSpecimen().getInstitutionName()}
                                 </span>
                             </td>
-                            <td>
+<!--                            <td>
                                 <span class="hovertext" data-hover="A verbatim description of the specimen, which allows to understand the nature of the specimen at a glance">
                                     ${item.getSpecimen().getDescription()}
                                 </span>
-                            </td>
+                            </td>-->
                             <td>
                                 <span class="hovertext" data-hover="The actual material of the specimen">
                                     ${item.getSpecimen().getMaterial()}

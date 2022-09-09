@@ -54,7 +54,7 @@
                     <th>Species</th>                    
                     <th>Provider</th>
                     <th>Specimen ID</th> 
-                    <th>Specimen</th> 
+                    <th>Specimen Description</th> 
                     <th data-toggle="true"></th>
                     <th data-hide="all">Specimen ID</th>
                     <th data-hide="all">Specimen Label</th>   
@@ -91,8 +91,8 @@
                                 </span>
                             </td>    
                             <td style="text-align: left">
-                                <span class="hovertext" data-hover="Original label on specimen vial. If the label does not exist the corresponding unique code is shown">
-                                    ${item.getSpecimenName()}
+                                <span class="hovertext" data-hover="A verbatim description of the specimen, which allows to understand the nature of the specimen at a glance">
+                                    ${item.getDescription()}
                                 </span>
                             </td>
                             <td><span class="footable-toggle"></span> More info</td>

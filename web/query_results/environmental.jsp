@@ -49,7 +49,7 @@
         <!-- Metacatalogue Top Bar : END -->
         
         <div class="results_wrapper">
-            <h3>Environmental Information Found</h3>
+            <h3>Environmental / Traits Information Found</h3>
             <table class="footable table table-bordered" >
                 <thead>
                     <th>Row</th>

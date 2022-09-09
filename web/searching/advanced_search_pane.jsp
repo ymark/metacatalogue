@@ -50,7 +50,7 @@
                                             <select class="form-control" id="searchType" name="searchType">
                                                 <option value="occurence" selected>Occurrence</option> 
                                                 <!--<option value="common_name">Common name</option>--> 
-                                                <option value="environmental">Environmental</option> 
+                                                <option value="environmental">Environmental / Traits</option> 
                                                 <!--<option value="genetics">Genetics</option>--> 
                                                 <!--<option value="identification">Identification</option>-->
                                                 <!--<option value="measurement">Morphometrics</option>--> 
@@ -243,7 +243,7 @@
                                 
                                 <form id="scientific_name_form" class="form-horizontal" action="../search/advanced/scientific_name" method="get" style="display: none">
                                     <div class="form-group">
-                                        <label for="scientificName" class="col-sm-3 control-label">Scientific Name ID</label>
+                                        <label for="scientificName" class="col-sm-3 control-label">Sc.Name ID (e.g. APHIA)</label>
                                         <div class="col-sm-4">
                                             <input type="text" name="scientificNameId" class="form-control">
                                         </div>
