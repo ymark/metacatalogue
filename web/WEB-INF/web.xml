@@ -155,6 +155,7 @@
         <url-pattern>*.gif</url-pattern>
         <url-pattern>*.woff</url-pattern>
         <url-pattern>*.ttf</url-pattern>
+        <url-pattern>*.csv</url-pattern>
     </servlet-mapping>    
     <session-config>
         <session-timeout>
